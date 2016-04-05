@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>修改头像</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/user-info.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<style>
+			body {
+				background-color: #333;
+			}
+			.app-primary {
+				background-color: rgba(24, 103, 194, 0.81);
+				color: white;
+			}
+			.app-form {
+				background: white;
+			}
+			.img-div {
+				position: relative;
+			}
+			.img-cover {
+				opacity: 0.6;
+				background-color: #000;
+				position: absolute;
+				z-index: 1;
+			}
+			#cover-center {
+				position: absolute;
+				z-index: 1;
+				width: 100px;
+				height: 100px;
+				top: 0;
+				left: 0;
+				border: 1px dotted white;
+			}
+			#cover-top {
+				width: 100%;
+				top: 0;
+				left: 0;
+			}
+			#cover-left {
+				height: 100px;
+				left: 0;
+			}
+			#cover-right {
+				height: 100px;
+				right: 0;
+			}
+			#cover-bottom {
+				width: 100%;
+				bottom: 0;
+			}
+			#resize {
+				position: absolute;
+				left: 68px;
+				top: 68px;
+				z-index: 5;
+				width: 0;
+				height: 0;
+				border-bottom: 30px solid white;
+				border-left: 30px solid transparent;
+			}
+			.canvas_btn {
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 60px;
+				background-color: #333;
+				opacity: .9;
+				z-index: 1000;
+			}
+			/*.canvas_btn a{float:left;color:#fff;width:60px;height:160px;line-height: 60px;text-decoration: none;text-align: center;}*/
+			/*.canvas_btn .canvas_ok{float:right;}*/
+			
+			footer {
+				width: 100%;
+				position: fixed;
+				bottom: 0px;
+				left: 0px;
+				width: 100%;
+				height: 50px;
+				z-index: 999;
+				background: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="change_photo">
+			<div class="mui-content">
+				<form class="app-form" onsubmit="return false;">
+					<div style="width: 100%;margin-top: 0px;">
+						<div id="img-div">
+							<div class="img-cover" id="cover-top"></div>
+							<div class="img-cover" id="cover-left"></div>
+							<div id="cover-center">
+								<div id="resize"></div>
+							</div>
+							<div class="img-cover" id="cover-right"></div>
+							<div class="img-cover" id="cover-bottom"></div>
+							<img id="img" src="" style="width: 100%;" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<div style="margin-top: 60px;"></div>
+			<footer class=" canvas_btn">
+				<a style="width: 33.33%;line-height: 60px;color: white;" onclick="cancelAction()">取消</a>
+				<a style="line-height: 60px;color: white;float: right;" onclick="save_img()">完成</a>
+			</footer>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../js/zepto.min.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+	<script type="text/javascript" src="../../js/jsfun.js"></script>
+	<script type="text/javascript" src="../../js/z-app.js"></script>
+	<script>
+		var upload = {};
+		App.go({
+			events: {
+				keys: {
+					back: function(e) {
+						mui.back();
+					}
+				},
+				gesture: {
+					swiperight: function(e) {
+						mui.back();
+					}
+				},
+			},
+			appReady: function() {
+				var s = plus.webview.currentWebview();
+				var path = s.headImageName;
+				var img = document.getElementById("img");
+				img.onload = function() {
+					initImg(this);
+				}
+				img.src = path;
+			},
+		});
+		 //切小头像用 
+		function initImg(img) {
+				var width = img.width; //图片宽度
+				var height = img.height; //图片高度
+				var iwh = Math.min(width, height);
+				//复初始传到后台的参数
+				upload.srcwidth = width;
+				upload.srcheight = height;
+				upload.coverwidth = 100;
+				upload.coverheight = 100;
+				upload.x = 0;
+				upload.y = 0;
+				calposition(0, 0);
+				var self = {};
+				document.getElementById("cover-center").ontouchstart = function(e) {
+					var e = e || event;
+					try {
+						e.preventDefault();
+					} catch (o) {
+						e.returnValue = false;
+					}
+					try {
+						e.stopPropagation();
+					} catch (o) {
+						e.cancelBubble = true;
+					}
+					e = e.touches ? e.touches[0] : e;
+					self.x = e.clientX - this.offsetLeft;
+					self.y = e.clientY - this.offsetTop;
+					//self.x=e.clientX;
+					//self.y=e.clientY;
+					this.ontouchmove = function(e) {
+						var e = e || event;
+						try {
+							e.preventDefault();
+						} catch (o) {
+							e.returnValue = false;
+						}
+						try {
+							e.stopPropagation();
+						} catch (o) {
+							e.cancelBubble = true;
+						}
+						e = e.touches ? e.touches[0] : e;
+						var l = e.clientX - self.x;
+						var t = e.clientY - self.y;
+						l = Math.max(l, 0);
+						t = Math.max(t, 0);
+						l = Math.min(l, width - this.offsetWidth);
+						t = Math.min(t, height - this.offsetHeight);
+						//console.log(l+","+t);
+						upload.x = l;
+						upload.y = t;
+						calposition(l, t);
+					}
+				}
+				document.getElementById("cover-center").ontouchend = function(e) {
+					try {
+						e.preventDefault();
+					} catch (o) {
+						e.returnValue = false;
+					}
+					try {
+						e.stopPropagation();
+					} catch (o) {
+						e.cancelBubble = true;
+					}
+					this.ontouchmove = null;
+				}
+				document.getElementById("resize").ontouchstart = function(e) {
+					var e = e || event;
+					try {
+						e.preventDefault();
+					} catch (o) {
+						e.returnValue = false;
+					}
+					try {
+						e.stopPropagation();
+					} catch (o) {
+						e.cancelBubble = true;
+					}
+					e = e.touches ? e.touches[0] : e;
+					self.x = e.clientX - this.offsetTop;
+					self.y = e.clientY - this.offsetLeft;
+					this.ontouchmove = function(e) {
+						var e = e || event;
+						try {
+							e.preventDefault();
+						} catch (o) {
+							e.returnValue = false;
+						}
+						try {
+							e.stopPropagation();
+						} catch (o) {
+							e.cancelBubble = true;
+						}
+						e = e.touches ? e.touches[0] : e;
+						var l = e.clientX - self.x;
+						var t = e.clientY - self.y;
+						l = Math.max(t, l);
+						l = l > iwh - 32 ? iwh - 32 : l;
+						resizeCover(l);
+					}
+				}
+				document.getElementById("resize").ontouchend = function(e) {
+					try {
+						e.preventDefault();
+					} catch (o) {
+						e.returnValue = false;
+					}
+					try {
+						e.stopPropagation();
+					} catch (o) {
+						e.cancelBubble = true;
+					}
+					this.ontouchmove = null;
+				}
+			}
+			//计算cover大小
+
+		function resizeCover(l) {
+				var resize = document.getElementById("resize");
+				resize.style.top = l + 'px';
+				resize.style.left = l + 'px';
+				var cover = document.getElementById("cover-center");
+				cover.style.width = (l + 32) + 'px';
+				cover.style.height = (l + 32) + 'px';
+				calposition(cover.offsetLeft, cover.offsetTop);
+				upload.coverwidth = l + 32;
+				upload.coverheight = l + 32;
+			}
+			//计算遮照位置
+
+		function calposition(l, t) {
+				var cover = document.getElementById("cover-center");
+				cover.style.left = l + "px";
+				cover.style.top = t + "px";
+				//计算上面距形
+				var covertop = document.getElementById("cover-top");
+				covertop.style.height = t + "px";
+				//计算左面距形
+				var coverleft = document.getElementById("cover-left");
+				coverleft.style.top = t + 'px';
+				coverleft.style.width = l + "px";
+				coverleft.style.height = cover.offsetHeight + "px";
+				//计算右面矩形
+				var coverright = document.getElementById("cover-right");
+				coverright.style.top = t + 'px';
+				coverright.style.left = (l + cover.offsetWidth) + "px";
+				coverright.style.height = cover.offsetHeight + "px";
+				//计算下面矩形
+				var coverbottom = document.getElementById("cover-bottom");
+				coverbottom.style.top = (t + cover.offsetHeight) + "px";
+			}
+			//裁图
+
+		function save_img() {
+			App.showWaiting('', {
+				modal: false
+			});
+			//创建上传任务
+			//var uploadImgeUrl = "/interface/user/info/photosave2.aspx?time=" + (new Date()).valueOf();
+			//var uploadImgeUrl ="/mobile/index.php?act=member_index&op=upload";
+			var stateText = localStorage.getItem('$uesr');
+			UsreKey = JSON.parse(stateText).key;
+			var uid=JSON.parse(stateText).uid;
+			var uploadImgeUrl = "/statics/uploads/index.php";
+			uploadImgeUrl = Gobal.server_url + uploadImgeUrl;
+			var task = plus.uploader.createUpload(uploadImgeUrl, {
+				method: 'POST',
+				blocksize: 0,
+				retry: 1
+			}, function(t, status) {
+				//var obj = JSON.parse(t);
+				console.log(JSON.stringify(t));
+				
+				//console.log(JSON.parse(t.responseText).files.jietu.name)
+				var name = JSON.parse(t.responseText).files.jietu.name;
+				plus.nativeUI.closeWaiting();
+				console.log(Gobal.server_url + "/mobile/ajax/imgmove/  "+"key:"+UsreKey+"  name:"+name+"  uid"+uid)
+				$.ajax({
+					type: "post",
+					url: Gobal.server_url + "/mobile/ajax/imgmove/",
+					async: true,
+					data: {
+						key: UsreKey,
+						touimg: name,
+						uid:uid
+					},
+					dataType:"json",
+					success: function(res) {
+						console.log(JSON.stringify(res));
+						if (res.status == 1) {
+							plus.webview.getWebviewById("indexuser.html").evalJS("user()");	
+							//plus.webview.getWebviewById("indexmy-order.html").evalJS("getuser()");
+							plus.nativeUI.toast('头像修改成功');
+							console.log(JSON.stringify(res));
+							mui.back();
+						}else{
+							plus.nativeUI.toast('头像未成功修改，请重试');
+						}
+					},
+					error:function(res){
+						console.log(JSON.stringify(res))
+						plus.nativeUI.toast('头像修改失败，请重试');
+					}
+				});
+			});
+			//设置上传文件
+			var s = plus.webview.currentWebview();
+			var path = s.headImageName;
+			console.log(path)
+			var index = path.lastIndexOf('/');
+			var name = path.substring(index + 1);
+			task.addFile(path, {
+				key: "jietu"
+			});
+			task.addData("filename", UsreKey);
+			task.addData("key", UsreKey);
+			task.addData("uid", uid);
+			task.addData("imgx", jsfun.CStr(upload.x));
+			task.addData("imgy", jsfun.CStr(upload.y));
+			task.addData("canvasWidth", jsfun.CStr(upload.srcwidth));
+			task.addData("canvasHeight", jsfun.CStr(upload.srcheight));
+			task.addData("imgw", jsfun.CStr(upload.coverwidth));
+			task.addData("imgh", jsfun.CStr(upload.coverheight));
+			task.addData("OS", jsfun.CStr(plus.os.name));
+			console.log(UsreKey +"  "+uid)
+			task.start();
+		}
+
+		function cancelAction() {
+			mui.back();
+		}
+	</script>
+
+</html>

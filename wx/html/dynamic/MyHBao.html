@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<title>我的订单 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/member.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			p.u-name.sdings {
+				margin-top: -10px;
+			}
+			
+			.btn {
+				width: 70px;
+			}
+			
+			.LongBtn {
+				margin-left: 38%;
+			}
+			
+			.u-mbr-info li:nth-child(3n-3) {
+				border-left: medium none;
+				border-top: 1px solid #efefef;
+				box-shadow: none;
+				line-height: 27px;
+				text-indent: 5px;
+				width: 100%;
+			}
+			
+			.m-name .z-Himg img {
+				margin-top: 0px;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="h5-1yyg-v11">
+					<section class="clearfix g-member">
+						<!--已登录-->
+						<div class="clearfix m-round m-name" id="Login">
+
+						</div>
+						<!--用户功能-->
+						<div class="m-round m-member-nav">
+							<ul id="myHongbao" style="disabled:false">
+								<li id="WantPromote.html" title="我要推广"><a><b class="z-arrow"></b>我要推广</a></li>
+								<li id="my-packet.html" title="我的红包"><a><b class="z-arrow"></b>我的红包</a></li>
+							</ul>
+						</div>
+					</section>
+				</div>
+				<div id="info"></div>
+			</div>
+		</div>
+
+		<!--弹出框-->
+		<div id="pageDialogBG" class="pageDialogBG">
+			<div class="Prompt"></div>
+		</div>
+		<!--弹出框-->
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/MyHBao.js"></script>
+		<script type="text/template" id="Login_ok">
+			<div class="fl f-Himg">
+				<a class="z-Himg" name="userindex" userID="{{userxinxi.uid}}">
+					<img src="{{userxinxi.img}}" id="headImg" />
+					<div>{{userxinxi.username}}</div>
+
+				</a>
+			</div>
+			<div class="m-name-info">
+				<p class="u-name">
+					<b class="z-name gray01"></b>
+					<em>个人信息</em>
+				</p>
+				<ul class="clearfix u-mbr-info">
+					<li>可用金币 <span class="orange">{{userxinxi.score}}</span></li>
+					<li>经验值 <span class="orange">{{userxinxi.jingyan}}</span></li>
+					<li>余额 <span class="orange">{{userxinxi.money}}</span>
+					</li>
+				</ul>
+			</div>
+		</script>
+	</body>
+
+</html>

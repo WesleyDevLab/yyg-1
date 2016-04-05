@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>商品详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/app/goods.css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+	</head>
+	<style type="text/css">
+		.pc {
+			margin-top: -47px;
+		}
+		
+		.pNav {
+			background: #FFFFFF;
+			box-shadow: 0 0px 0px #b8b8b8;
+		}
+		
+		.pNav ul.slides li:first-child b {
+			border: 0;
+		}
+	</style>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="h5-1yyg-v1 subpage" id="loadingPicBlock">
+					<!-- 栏目页面顶部 -->
+					<!-- 内页顶部 -->
+					<input name="hidGoodsID" type="hidden" id="hidGoodsID" value="" />
+					<!--上期获奖者id-->
+					<input name="hidCodeID" type="hidden" id="hidCodeID" value="4" />
+				</div>
+				<!--本期商品id-->
+				<section class="goodsCon pCon pc" id="Goods">
+				</section>
+			</div>
+		</div>
+		<script type="text/template" id="Goodtems">
+			<!-- 导航 -->
+			<div class="pNav" id="divPeriod" style="display: none;">
+				<ul class="slides">
+					{{each periods(shop.qishu,shop.zongqishu) as vlaue i}} {{if vlaue==shop.qishu}}
+					<li class="cur" data-qishu="{{vlaue}}"><a>第{{vlaue}}期</a><b></b></li>
+					{{else}}
+					<li data-qishu="{{vlaue}}"><a>第{{vlaue}}期</a><b></b></li>
+					{{/if}} {{/each}}
+				</ul>
+			</div>
+			<!-- 产品图 -->
+			<div class="pPic pPicBor" style="margin-top: 35px;">
+				<div class="pPic2">
+					<div class="pImg" id="sliderBox">
+						<div class="flex-viewport">
+							<ul class="slides">
+								{{each shop.picarr as sp index}}
+								<li><img src="{{sp}}"></li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{if shop.if_pub == 1 && shop.seconds<=0}}
+			<div class="userInfo">
+				<div class="biaoqji"></div>
+				<div class="infobox">
+					<div class="userhead" name="userindex" userID="{{shangqihuojiang.q_user.uid}}">
+						<img src="{{shangqihuojiang.q_user.img}}"/>
+					</div>
+					<div class="userHuojiang">
+						<p><span>获奖者：</span><strong name="userindex" userID="{{shangqihuojiang.q_user.uid}}">{{shangqihuojiang.q_user.username}}</strong></p>
+						<p><span>期数：</span><strong>第（{{shop['qishu']}}）期</strong></p>
+						<p><span>总共抢拍：</span><strong><b>{{shangqihuojiang.gonumber}}</b>人次</strong></p>
+						<p><span>揭晓时间：</span><strong>{{shangqihuojiang.q_end_time | time}}</strong></p>
+					</div>
+					<div class="userNumber">
+						<div class="userbg"></div>
+						<div class="NumberBox"><span>幸运号码：</span><strong>{{shangqihuojiang.q_user_code}}</strong></div>
+						<div class="ckxqa" id="See" data-id="{{shangqihuojiang.id}}" data-qishu="{{shangqihuojiang.qishu}}">计算详情</div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+			<!-- 条码信息 -->
+			<div class="pDetails ">
+				<b><span class="purchase-icon"><!--限购--></span>(第{{shop['qishu']}}期){{shop['title']}} <span></span></b>
+				<p class="price">价值：<em class="arial gray">￥{{shop['money']}}</em></p>
+				{{if shop.q_user_code== null}}
+				<div class="Progress-bar">
+					<p class="u-progress" title="已完成4.33%">
+						<span class="pgbar" style="width:{{(shop['canyurenshu']/shop['zongrenshu'])*100}}%;">
+							<span class="pging"></span>
+						</span>
+					</p>
+					<ul class="Pro-bar-li">
+						<li class="P-bar01">
+							<p class="num-p1">{{shop['canyurenshu']}}</p>
+							<p class="snde">已参与</p>
+						</li>
+						<li class="P-bar02">
+							<p class="num-p2">{{shop['zongrenshu']}}</p>
+							<p class="snde">总需人次</p>
+						</li>
+						<li class="P-bar03">
+							<p class="num-p3">{{shop['shenyurenshu']}}</p>
+							<p class="snde">剩余</p>
+						</li>
+					</ul>
+				</div>
+
+				<div id="btnBuyBox" class="pBtn" codeid="4">
+					<a href="javascript:;" class="fl buyBtn" id="{{shop.id}}" data-qishu="{{shop.qishu}}">立即购买</a>
+					<a href="javascript:;" class="fr addBtn" id="{{shop.id}}" data-qishu="{{shop.qishu}}">加入购物车</a>
+				</div>
+				<div class="fuwu">服务：<span class="orange">全民抢拍</span>由全民抢拍发货并提供售后</div>
+				{{/if}}
+				{{if shop.if_pub}}
+					{{if shop.if_pub == 1 && shop.seconds <=0 }}
+						{{if shop.q_user_code != null}}
+							{{if shop.qishu == shop.maxqishu}}
+								<div class="pClosed">抢拍已结束</div>
+							{{else}}
+								<div class="pClosed">本期已揭晓</div>
+								<div codeid="1741469" class="pOngoing">第<em class="arial">{{shop.zongqishu}}</em>期抢拍 进行中…<span class="fr" id="seeDetails" data-qishu="{{shop.zongqishu}}">查看详情</span></div>
+							{{/if}}
+						{{/if}}
+					{{else}}
+							{{if shop.seconds<=0}}
+								<div class="limit-time">
+								<p>第{{shop['qishu']}}期开奖</p>
+								<div><span>幸运号码：shangqihuojiang.q_user_code</span></div>
+								</div>
+							{{else}}
+								<!--判断是否为揭晓时间-->
+								<div class="limit-time" time="{{shop.seconds}}" name="timejx">
+								<p>第{{shop['qishu']}}期开奖</p>
+								<div><span>揭晓倒计时：</span><strong id="lotter-time-{{shop.id}}"><em>00</em>分<em>00</em>秒<em>00</em></strong></div>
+								</div>
+						{{/if}} 
+					{{/if}}
+				{{/if}}
+			</div>
+			<!-- 参与记录，商品详细，晒单导航 -->
+			<div class="joinAndGet">
+				<dl>
+					<a id="Record" data-id="{{shop.id}}" data-qishu="{{shop.qishu}}"><b class="fr z-arrow"></b>所有抢拍记录</a>
+					<a id="winRecord" data-id="{{shop.id}}" data-qishu="{{shop.qishu}}"><b class="fr z-arrow"></b>往期揭晓</a>
+					<a id="details" data-id="{{shop.id}}" data-qishu="{{shop.qishu}}"><b class="fr z-arrow"></b>图文详情<span>（建议WiFi下使用）</span> </a>
+					<a id="comments" data-id="{{shop.id}}" data-qishu="{{shop.qishu}}"><b class="fr z-arrow"></b>晒单分享</a>
+
+				</dl>
+				{{if shop.qishu != "1"}} {{if  shop.q_user_code == null  && shangqihuojiang.if_pub==1 && shangqihuojiang.seconds<=0}}
+				<!-- 上期获得者 -->
+				<ul id="prevPeriod" class="m-round" codeid="" uweb="" data-qishu="{{shangqihuojiang.qishu}}" style="display: none;">
+					<li class="fl" name="userindex" userID="{{shangqihuojiang.uid}}"><s></s><img src="{{shangqihuojiang.q_user.img}}" /></li>
+					<li class="fr"><b class="z-arrow"></b></li>
+					<li class="getInfo">
+						<dd>
+							<em class="blue" name="userindex" userID="{{shangqihuojiang.uid}}">{{shangqihuojiang.q_user.username}}</em>
+						</dd>
+						<dd>总共抢拍：<em class="orange arial">{{shangqihuojiang.gonumber}}</em>人次</dd>
+						<dd>幸运抢拍码：<em class="orange arial">{{shangqihuojiang.q_user_code}}</em></dd>
+						<dd>揭晓时间：{{shangqihuojiang.xsjx_time | time}}</dd>
+						<dd>抢拍时间：{{shangqihuojiang.time | time}}</dd>
+					</li>
+				</ul>
+				{{/if}} {{/if}}
+			</div>
+		</script>
+		<script type="text/template" id="jiexiao">
+			<div class="pProcess" style="background: #F5F5F5;">
+				<div class="pResults">
+					<div class="pResultsL" name="userindex" userID="{{uid}}">
+						<a>
+							<img src="{{userphoto}}">
+						</a>
+						<s></s>
+					</div>
+					<div class="pResultsR">
+						<div class="g-snav">
+							<div class="g-snav-lst all-duobao" style="text-align: left;margin: 0;">
+								<dd class="all-duobao" style="margin: 0px;">中奖账户:{{q_user}}</dd>
+								<dd class="gray9" style="margin: 5px 0;">总共抢拍：<span>{{gonumber}} 人次</span></dd>
+								<dd class="gray9" style="margin: 5px 0;">揭晓时间:<span>{{q_end_time}}</span></dd>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/Countdown.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/app/PeriodSlider.js"></script>
+		<script type="text/javascript" src="../../js/app/GoodsPicSlider.js"></script>
+		<script type="text/javascript" src="../../js/app/index.item.js"></script>
+		<!--购物车弹出框-->
+		<div id="pageDialogBG" class="pageDialogBG">
+			<div class="Prompt"></div>
+		</div>
+		<!--购物车弹出框-->
+	</body>
+
+</html>

@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>一元购</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/index.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.mui-table-view::after {background: none;}
+			.carry-prize p{margin-bottom: 0;color: #4d4d4d;}
+			.carry_div{position: relative;border: 1px solid #f0eff4;}
+			.carry-prize{position: absolute;top: 3px;left: 9em;}
+			.home-head{margin-top: 44px;}
+			.duoduo{width: 40%;margin-left: -10px;margin-top: 2px;}
+			.fenlei{width: 45%;}
+			.head-r.header-r {
+    right: -17px;
+    top: 10px;
+}
+		</style>
+	</head>
+
+	<body class="subpage">
+		<header class="g-header">
+			<div class="head-l">
+				<a href="javascript:;" onclick="history.go(-1)" class="z-HReturn">
+					<img src="../../img/renrenduobao.png" class="duoduo" />
+				</a>
+			</div>
+			
+			<div class="head-r header-r">
+				<a href="#" class="right-header">
+					<img src="../../img/fenlei.png" class="fenlei" >
+				</a>
+			</div>
+		</header>
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper home-head">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view mui-table-view-chevron">
+					<div class="h5-1yyg-v1" id="loadingPicBlock">
+						<!-- 内页顶部 -->
+						<!--<input name="hidStartAt" type="hidden" id="hidStartAt" value="0" />-->
+						<!-- 焦点图 -->
+						<section id="sliderBox" class="hotimg">
+							<ul class="slides">
+								<li style="background-color:">
+									<a Address="index.item.html" data-id="340" data-sub="true">
+										<img class="img_cover" src="http://1yg.lirlu.com/statics/uploads/banner/20150929/48926694456575.jpg" data-src="http://1yg.lirlu.com/statics/uploads/banner/20150929/48926694456575.jpg" onload="load(this)" alt="" width="614PX" height="110PX">
+									</a>
+								</li>
+								<li style="background-color:">
+									<a Address="index.item.html" data-id="" data-sub="true">
+										<img class="img_cover" src="http://1yg.lirlu.com/statics/uploads/banner/20150929/42877333456673.jpg" data-src="http://1yg.lirlu.com/statics/uploads/banner/20150929/42877333456673.jpg" onload="load(this)" alt="" width="614PX" height="110PX">
+									</a>
+								</li>
+								<li style="background-color:">
+									<a Address="index.item.html" data-id="" data-sub="true">
+										<img class="img_cover" src="http://1yg.lirlu.com/statics/uploads/banner/20151106/81375941795339.jpg" data-src="http://1yg.lirlu.com/statics/uploads/banner/20151106/81375941795339.jpg" onload="load(this)" alt="" width="614PX" height="110PX">
+									</a>
+								</li>
+							</ul>
+						</section>
+						<!-- 最新揭晓 -->
+					<section class="g-main">
+							<div class="m-tt1" id="lottery" Address="index.lottery.html">
+								<h2 class="fl"><a Address="index.lottery.html">最新揭晓</a></h2>
+								<div class="fr u-more">
+									<a href="index.lottery.html" class="u-rs-m1">
+										<b class="z-arrow"></b>
+									</a>
+								</div>
+							</div>
+							<article class="h5-1yyg-w310 m-round m-lott-li" id="divLottery">
+								<ul class="carry_div">
+									
+									<img src="../../img/20141024155736176.jpg" style="width: 9em;">
+									<div class="carry-prize">
+										iphone 6s携号转网武汉电信合约机
+										<p>获奖者：137****0602</p>
+										<p>本期彩陶：1人次</p>
+										<p>幸运彩陶码<span class="yard">1000042</span></p>
+										<p>揭晓时间：2015-10-29-10
+											<!--<p>揭晓时间：2015-10-29-10 :45 :30.045</p>-->
+									</div>
+									
+								</ul>
+								<div class="carry_div">
+									<img src="../../img/20141024155736176.jpg" style="width: 9em;">
+									<div class="carry-prize">
+										iphone 6s携号转网武汉电信合约机
+										<p>获奖者：137****0602</p>
+										<p>本期彩陶：1人次</p>
+										<p>幸运彩陶码<span class="yard">1000042</span></p>
+										<p>揭晓时间：2015-10-29-10 :45 :30.045</p>
+
+										<!--<p>揭晓时间：2015-10-29-10 :45 :30.045</p>-->
+									</div>
+								</div>
+							</article>
+						</section>
+						<!-- 今日限时 -->
+						<section class="g-main" style="display: none;">
+							<div class="m-tt1">
+								<h2 class="fl"><a Address="{WEB_PATH}/mobile/autolottery">今日限时</a></h2>
+								<div class="fl z-tips">每天10点、15点、22点准时揭晓</div>
+								<div class="fr u-more">
+									<a href="#" class="u-rs-m2">
+										<b class="z-arrow"></b> 明日限时
+									</a>
+								</div>
+							</div>
+							<article id="autoLotteryBox" class="clearfix h5-1yyg-w310 m-round overflow">
+								<ul id="divTimerItems" class="slides" style="display: block;">
+									<li class="m-xs-li" txt="10点" codeid="342" uweb="1000000000">
+										<article class="clearfix m-xs-ct m-xs-End">
+											<div class="u-xs-pic">
+												<div class="z-xs-pic">
+													<a Address="index.item.html" data-id="342" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/20150929/98626041457096.png" onload="load(this)" border=0 /></a>
+												</div>
+												<div class="z-xs-time"><b>已结束</b></div>
+											</div>
+											<div class="u-xs-con">
+												<div class="clearfix u-xs-name">
+													<a class="u-xs-name-img" href="user.index.html">
+														iPhone 6s携号转网武汉电信合约机
+													</a>
+													
+												</div>
+												<p class="price-i1">幸运彩陶码码：<em class="orange">200000</em></p><br />
+												<p class="price-i">总共抢拍：1243人次</p><br />
+												<p class="price-i">价值:<em class="arial">￥20.00元</em></p>
+												<div class="Progress-bar"> 
+													<p class="u-progress" title="已完成0%"> 
+														<span class="pgbar" style="width:0%;">
+ 	   													<span class="pging"></span>
+														</span>
+													</p>
+													<ul class="Pro-bar-li dejir">
+														<li class="P-bar01"><em class="dede">0</em><span class="yicy">已参与</span></li>
+														<li class="P-bar02"><em class="dede"><span class="twrny">20</span></em><span class="yicy">总需人次</span></li>
+														<li class="P-bar03"><em class="dede">20</em><span class="yicy">剩余</span></li>
+													</ul>
+												</div>
+											</div>
+										</article>
+									</li>
+									<li class="m-xs-li" txt="15点" codeid="340">
+										<article class="clearfix m-xs-ct ">
+											<div class="u-xs-pic">
+												<div class="z-xs-pic">
+													<a Address="index.item.html" data-id="340" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/20150929/98626041457096.png" onload="load(this)" border=0 /></a>
+												</div>
+												<div name="timerItem" class="z-xs-time" time="731.254"><em>00</em>时<em>00</em>分<em>00</em>秒<s class="z-aw-tblr"></s>
+												</div>
+											</div>
+											<div class="u-xs-con">
+												<a class="u-xs-name-img" href="user.index.html">
+													iPhone 6s携号转网武汉电信合约机
+												</a><br />
+												<p class="price-i1">幸运彩陶码码：<em class="orange">200000</em></p><br />
+												<p class="price-i">总共抢拍：1243人次</p><br />
+												<p class="price-i">价值:<em class="arial">￥20.00元</em></p>
+												<div class="Progress-bar">
+													<p class="u-progress" title="已完成21.176470588235293%"><span class="pgbar" style="width:21.176470588235293%;"><span class="pging"></span></span>
+													</p>
+													<ul class="Pro-bar-li">
+														<li class="P-bar01"><em>18</em>已参与</li>
+														<li class="P-bar02"><em>85</em>总需人次</li>
+														<li class="P-bar03"><em>67</em>剩余</li>
+													</ul>
+												</div>
+											</div>
+										</article>
+									</li>
+									<li class="m-xs-li" txt="22点" codeid="339">
+										<article class="clearfix m-xs-ct ">
+											<div class="u-xs-pic">
+												<div class="z-xs-pic">
+													<a Address="index.item.html" data-id="339" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/20150929/98626041457096.png" onload="load(this)" border=0 /></a>
+												</div>
+												<div name="timerItem" class="z-xs-time" time="25931.254"><em>00</em>时<em>00</em>分<em>00</em>秒<s class="z-aw-tblr"></s>
+												</div>
+											</div>
+											<div class="u-xs-con">
+												<a Address="index.item.html" data-id="339" data-sub="true" class="gray6 z-tt">(第46期)LOQI 春卷包 款式随机</a>
+												<br />
+												<p class="price-i1">幸运彩陶码码：<em class="orange">200000</em></p><br />
+												<p class="price-i">总共抢拍：1243人次</p><br />
+												<p class="price-i">价值:<em class="arial">￥20.00元</em></p>
+												<div class="Progress-bar">
+													<p class="u-progress" title="已完成18.75%"><span class="pgbar" style="width:18.75%;"><span class="pging"></span></span>
+													</p>
+													<ul class="Pro-bar-li">
+														<li class="P-bar01"><em>24</em>已参与</li>
+														<li class="P-bar02"><em>128</em>总需人次</li>
+														<li class="P-bar03"><em>104</em>剩余</li>
+													</ul>
+												</div>
+											</div>
+										</article>
+									</li>
+								</ul>
+							</article>
+						</section>
+						<!-- 热门推荐 -->
+						<section class="g-main">
+							<div class="m-tt1" id="glist">
+								<h2 class="fl"><a Address="index.glist.html">热门推荐</a></h2>
+								
+								<div class="fr u-more">
+									<a Address="index.glist.html" class="u-rs-m1"><b class="z-arrow"></b></a>
+								</div>
+							</div>
+							<article class="clearfix h5-1yyg-w310 m-round m-tj-li">
+								<ul id="ulRecommend">
+									<li id="342">
+										<div class="f_bor_tr">
+											<div class="m-tj-pic">
+												<a Address="index.item.html" data-id="342" data-sub="true" class="u-lott-pic">
+													<img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/20150929/98626041457096.png" onload="load(this)" data-lazyload="http://1yg.lirlu.com/statics/uploads/shopimg/20150929/98626041457096.png" border=0
+													alt="" />
+												</a>
+												<!--<ins class="u-promo">价值:￥20.00</ins>-->
+											</div>
+											<div class="name-goods">
+												MGX72CH苹果笔记本电脑
+											</div>
+											<div class="Progress-bar">
+												
+												<p class="u-progress" title="已完成4%">
+													
+													<span class="pgbar" style="width:0%;">
+ 													<span class="pging"></span>
+													</span>
+												</p>
+												<ul class="Pro-bar-li">
+													<li class="P-bar01"><em>0</em>已参与</li>
+													<li class="P-bar02"><em>20</em>总需人次</li>
+													<li class="P-bar03"><em>20</em>剩余</li>
+													
+												</ul>
+												
+												
+											</div>
+											
+											
+												<img src="../../img/icon-gouwuche.png" class="cart-img" />
+												
+											
+										</div>
+									</li>
+									<li id="340">
+										<div class="f_bor_tr">
+											<div class="m-tj-pic">
+												<a Address="index.item.html" data-id="340" data-sub="true" class="u-lott-pic">
+													<img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/9715df7d108f5f463e1fbd06dc3e1f33.png" onload="load(this)" data-lazyload="http://1yg.lirlu.com/statics/uploads/shopimg/9715df7d108f5f463e1fbd06dc3e1f33.png"
+													border=0 alt="" />
+												</a>
+												<!--<ins class="u-promo">价值:￥85.00</ins>-->
+												
+											</div>
+											<div class="name-goods">
+												MGX72CH苹果笔记本电脑
+											</div>
+											<div class="Progress-bar">
+												<p class="u-progress" title="已完成21.176470588235293%">
+													<span class="pgbar" style="width:21.176470588235293%;">
+ 		<span class="pging"></span>
+													</span>
+												</p>
+												<ul class="Pro-bar-li">
+													<li class="P-bar01"><em>18</em>已参与</li>
+													<li class="P-bar02"><em>85</em>总需人次</li>
+													<li class="P-bar03"><em>67</em>剩余</li>
+												</ul>
+											</div>
+										</div>
+										<img src="../../img/icon-gouwuche.png" class="cart-img" />
+									</li>
+									<li id="337">
+										<div class="f_bor_tr">
+											<div class="m-tj-pic">
+												<a Address="index.item.html" data-id="337" data-sub="true" class="u-lott-pic">
+													<img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/f5ae9e2a83e5994fed2328c27ae69dcb.png" onload="load(this)" data-lazyload="http://1yg.lirlu.com/statics/uploads/shopimg/f5ae9e2a83e5994fed2328c27ae69dcb.png"
+													border=0 alt="" />
+												</a>
+												<!--<ins class="u-promo">价值:￥369.00</ins>-->
+											</div>
+											<div class="name-goods">
+												MGX72CH苹果笔记本电脑
+											</div>
+											<div class="Progress-bar">
+												<p class="u-progress" title="已完成37.669376693766935%">
+													<span class="pgbar" style="width:37.669376693766935%;">
+ 		<span class="pging"></span>
+													</span>
+												</p>
+												<ul class="Pro-bar-li">
+													<li class="P-bar01"><em>139</em>已参与</li>
+													<li class="P-bar02"><em>369</em>总需人次</li>
+													<li class="P-bar03"><em>230</em>剩余</li>
+												</ul>
+											</div>
+										</div>
+										<img src="../../img/icon-gouwuche.png" class="cart-img" />
+									</li>
+									<li id="336">
+										<div class="f_bor_tr">
+											<div class="m-tj-pic">
+												<a Address="index.item.html" data-id="336" data-sub="true" class="u-lott-pic">
+													<img class="img_cover" src="../../img/logo_gray.png" data-src="http://1yg.lirlu.com/statics/uploads/shopimg/601bfb0d05c9b05c78667ae528220cac.png" onload="load(this)" data-lazyload="http://1yg.lirlu.com/statics/uploads/shopimg/601bfb0d05c9b05c78667ae528220cac.png"
+													border=0 alt="" />
+												</a>
+												<!--<ins class="u-promo">价值:￥369.00</ins>-->
+											</div>
+											<div class="name-goods">
+												MGX72CH苹果笔记本电脑
+											</div>
+											<div class="Progress-bar">
+												<p class="u-progress" title="已完成45.25745257452575%">
+													<span class="pgbar" style="width:45.25745257452575%;">
+ 													<span class="pging"></span>
+													</span>
+												</p>
+												<ul class="Pro-bar-li">
+													<li class="P-bar01"><em>167</em>已参与</li>
+													<li class="P-bar02"><em>369</em>总需人次</li>
+													<li class="P-bar03"><em>202</em>剩余</li>
+												</ul>
+											</div>
+										</div>
+										<img src="../../img/icon-gouwuche.png" class="cart-img" />
+									</li>
+								</ul>
+							</article>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/template" id="slider-tpl">
+			<ul class="slides">
+				{{each slides as slide index}}
+				<li style="background-color:{{slide.alt}}">
+					<a Address="index.item.html" data-id="{{slide.id}}" data-sub="true">
+						<img class="img_cover" src="{{slide.src}}" data-src="{{slide.src}}" onload="load(this)" alt="" width="{{slide.width}}" height="{{slide.height}}">
+					</a>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script type="text/template" id="lotter-tpl">
+			<ul class="clearfix">
+				{{each shopqishu as qishu index}}
+				<li>
+					<a Address="index.item.html" data-id="{{qishu.id}}" data-sub=" true " class="u-lott-pic">
+						<img class="img_cover" src="{{qishu['thumb']}}" data-src="{{qishu['thumb']}}" onload="load(this)" border="0" alt="" />
+					</a>
+					<span>恭喜<a Address="index.userindex.html" data-id="{{qishu.id}}" data-sub="true" class="blue z-user">{{qishu.q_user.username}}</a>获得</span>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script type="text/template" id="timer-tpl">
+			{{if count>1}}
+			<div class="loading"><b></b>正在加载</div>
+			{{else if count==0}}
+			<div id="divNone" class="haveNot z-minheight" style="display:block"><s></s>
+				<p>抱歉，今日没有发布限时揭晓商品！</p>
+			</div>
+			{{/if}} {{each jinri_shoplist as shop index}} {{if now > shop['xsjx_time'] }}
+
+			<li class="m-xs-li" txt="{{shop['time_H']}}点" codeid="{{shop['id']}}" uweb="{{shop['q_uid']+1000000000}}">
+				<article class="clearfix m-xs-ct m-xs-End">
+					<div class="u-xs-pic">
+						<div class="z-xs-pic">
+							<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="{{shop['thumb']}}" onload="load(this)" border=0 /></a>
+						</div>
+						<div class="z-xs-time"><b>已结束</b></div>
+					</div>
+					<div class="u-xs-con">
+						<div class="clearfix u-xs-name">
+							<a class="u-xs-name-img" href="user.index.html" data-id="{{shop.q_uid}}">
+								<img name="uImg" border="0" src="{{shop['user_img']}}" /></a>
+							<div class="u-xs-name-r">
+								<p>恭喜<a name="uName" href="user.index.html" data-id="{{shop.q_uid}}" class="z-user blue">{{shop['user_name']}}</a>获得</p>
+								<p>幸运抢拍码：<em class="orange">{{shop['q_user_code']}}</em></p>
+								<p>总共抢拍：<em class="orange">{{shop['total_buy']}}</em>人次</p>
+							</div>
+						</div><ins class="z-promo">价值:<em class="arial">￥{{shop['money']}}</em></ins>
+						<div class="Progress-bar">
+							<p class="u-progress" title="已完成{{shop['canyurenshu']/shop['zongrenshu']*100}}%">
+								<span class="pgbar" style="width:{{shop['canyurenshu']/shop['zongrenshu']*100}}%;">
+	   <span class="pging"></span>
+								</span>
+							</p>
+							<ul class="Pro-bar-li">
+								<li class="P-bar01"><em>{{shop['canyurenshu']}}</em>已参与</li>
+								<li class="P-bar02"><em>{{shop['zongrenshu']}}</em>总需人次</li>
+								<li class="P-bar03"><em>{{shop['zongrenshu']-shop['canyurenshu']}}</em>剩余</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</li>
+			{{else}}
+			<li class="m-xs-li" txt="{{shop.time_H}}点" codeid="{{shop['id']}}">
+				<article class="clearfix m-xs-ct ">
+					<div class="u-xs-pic">
+						<div class="z-xs-pic">
+							<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="{{shop['thumb']}}" onload="load(this)" border=0 /></a>
+						</div>
+						<div name="timerItem" class="z-xs-time" time="{{shop.xsjx}}"><em>00</em>时<em>00</em>分<em>00</em>秒<s class="z-aw-tblr"></s>
+						</div>
+					</div>
+					<div class="u-xs-con">
+						<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true" class="gray6 z-tt">(第{{shop['qishu']}}期){{shop['title']}}</a>
+						<ins class="z-promo">价值:<em class="arial">￥{{shop['money']}}</em></ins>
+						<div class="Progress-bar">
+							<p class="u-progress" title="已完成{{shop['canyurenshu']/shop['zongrenshu']*100}}%"><span class="pgbar" style="width:{{shop['canyurenshu']/shop['zongrenshu']*100}}%;"><span class="pging"></span></span>
+							</p>
+							<ul class="Pro-bar-li">
+								<li class="P-bar01"><em>{{shop['canyurenshu']}}</em>已参与</li>
+								<li class="P-bar02"><em>{{shop['zongrenshu']}}</em>总需人次</li>
+								<li class="P-bar03"><em>{{shop['zongrenshu']-shop['canyurenshu']}}</em>剩余</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</li>
+			{{/if}} {{/each}}
+		</script>
+		<script type="text/template" id="recommend-tpl">
+			{{each shoplistrenqi as renqi index}}
+			<li id="{{renqi['id']}}">
+				<div class="f_bor_tr">
+					<div class="m-tj-pic">
+						<a Address="index.item.html" data-id="{{renqi.id}}" data-sub="true" class="u-lott-pic">
+							<img class="img_cover" src="../../img/logo_gray.png" data-src="{{renqi['thumb']}}" onload="load(this)" data-lazyload="{{renqi['thumb']}}" border=0 alt="" />
+						</a>
+						<ins class="u-promo">价值:￥{{renqi['money']}}</ins>
+					</div>
+					<div class="Progress-bar">
+						<p class="u-progress" title="已完成{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%">
+							<span class="pgbar" style="width:{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%;">
+		<span class="pging"></span>
+							</span>
+						</p>
+						<ul class="Pro-bar-li">
+							<li class="P-bar01"><em>{{renqi['canyurenshu']}}</em>已参与</li>
+							<li class="P-bar02"><em>{{renqi['zongrenshu']}}</em>总需人次</li>
+							<li class="P-bar03"><em>{{renqi['zongrenshu']-renqi['canyurenshu']}}</em>剩余</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.base64.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/fun.js"></script>
+		<script type="text/javascript" src="../../js/md5.min.js"></script>
+		<script type="text/javascript" src="../../js/imgload.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/Flexslider.js"></script>
+		<script type="text/javascript" src="../../js/app/CountdownFun.js"></script>
+		<script type="text/javascript" src="../../js/app/Index.js"></script>
+		<script>
+			$("#sliderBox").flexslider();
+			$("#autoLotteryBox").flexslider({
+				slideshow: false,
+				animationLoop: true,
+				controlType: 1,
+				controlPos: 1,
+				startAt: 0
+			});
+		</script>
+	</body>
+
+</html>

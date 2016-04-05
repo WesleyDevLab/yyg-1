@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>一元购</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/index.css" rel="stylesheet" type="text/css" />
+		<style>
+			.mui-table-view::after {
+				background: none;
+			}
+		</style>
+	</head>
+
+	<body class="subpage">
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view mui-table-view-chevron">
+					<div class="h5-1yyg-v1" id="loadingPicBlock">
+						<!-- 内页顶部 -->
+						<input name="hidStartAt" type="hidden" id="hidStartAt" value="0" />
+						<!-- 焦点图 -->
+						<section id="sliderBox" class="hotimg">
+						</section>
+						<!-- 最新揭晓 -->
+						<section class="g-main">
+							<div class="m-tt1" id="lottery" Address="index.lottery.html">
+								<h2 class="fl"><a Address="index.lottery.html">最新揭晓</a></h2>
+								<div class="fr u-more">
+									<a href="index.lottery.html" class="u-rs-m1">
+										<b class="z-arrow"></b>
+									</a>
+								</div>
+							</div>
+							<article class="h5-1yyg-w310 m-round m-lott-li" id="divLottery">
+								
+							</article>
+						</section>
+						<!-- 今日限时 -->
+						<section class="g-main">
+							<div class="m-tt1">
+								<h2 class="fl"><a Address="{WEB_PATH}/mobile/autolottery">今日限时</a></h2>
+								<div class="fl z-tips">每天10点、15点、22点准时揭晓</div>
+								<div class="fr u-more">
+									<a href="#" class="u-rs-m2">
+										<b class="z-arrow"></b> 明日限时
+									</a>
+								</div>
+							</div>
+							<article id="autoLotteryBox" class="clearfix h5-1yyg-w310 m-round overflow">
+								<ul id="divTimerItems" class="slides" style="display: block;">
+								</ul>
+							</article>
+						</section>
+						<!-- 热门推荐 -->
+						<section class="g-main">
+							<div class="m-tt1" id="glist">
+								<h2 class="fl"><a Address="index.glist.html">热门推荐</a></h2>
+								<div class="fr u-more">
+									<a Address="index.glist.html" class="u-rs-m1"><b class="z-arrow"></b></a>
+								</div>
+							</div>
+							<article class="clearfix h5-1yyg-w310 m-round m-tj-li">
+								<ul id="ulRecommend"></ul>
+							</article>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/template" id="slider-tpl">
+			<ul class="slides">
+				{{each slides as slide index}}
+				<li style="background-color:{{slide.alt}}">
+					<a Address="index.item.html" data-id="{{slide.id}}" data-sub="true">
+						<img class="img_cover" src="{{slide.src}}" data-src="{{slide.src}}"  onload="load(this)"  alt="" width="{{slide.width}}" height="{{slide.height}}">
+					</a>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script type="text/template" id="lotter-tpl">
+			<ul class="clearfix">
+				{{each shopqishu as qishu index}}
+				<li>
+					<a Address="index.item.html" data-id="{{qishu.id}}" data-sub=" true " class="u-lott-pic">
+						<img  class="img_cover" src="{{qishu['thumb']}}" data-src="{{qishu['thumb']}}"  onload="load(this)"  border="0" alt="" />
+					</a>
+					<span>恭喜<a Address="index.userindex.html" data-id="{{qishu.id}}" data-sub="true" class="blue z-user">{{qishu.q_user.username}}</a>获得</span>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script type="text/template" id="timer-tpl">
+			{{if count>1}}
+			<div class="loading"><b></b>正在加载</div>
+			{{else if count==0}}
+			<div id="divNone" class="haveNot z-minheight" style="display:block"><s></s>
+				<p>抱歉，今日没有发布限时揭晓商品！</p>
+			</div>
+			{{/if}} {{each jinri_shoplist as shop index}} {{if now > shop['xsjx_time'] }}
+
+			<li class="m-xs-li" txt="{{shop['time_H']}}点" codeid="{{shop['id']}}" uweb="{{shop['q_uid']+1000000000}}">
+				<article class="clearfix m-xs-ct m-xs-End">
+					<div class="u-xs-pic">
+						<div class="z-xs-pic">
+							<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="{{shop['thumb']}}" onload="load(this)" border=0 /></a>
+						</div>
+						<div class="z-xs-time"><b>已结束</b></div>
+					</div>
+					<div class="u-xs-con">
+						<div class="clearfix u-xs-name">
+							<a class="u-xs-name-img" href="user.index.html" data-id="{{shop.q_uid}}">
+								<img name="uImg" border="0" src="{{shop['user_img']}}" /></a>
+							<div class="u-xs-name-r">
+								<p>恭喜<a name="uName" href="user.index.html" data-id="{{shop.q_uid}}" class="z-user blue">{{shop['user_name']}}</a>获得</p>
+								<p>幸运抢拍码：<em class="orange">{{shop['q_user_code']}}</em></p>
+								<p>总共抢拍：<em class="orange">{{shop['total_buy']}}</em>人次</p>
+							</div>
+						</div><ins class="z-promo">价值:<em class="arial">￥{{shop['money']}}</em></ins>
+						<div class="Progress-bar">
+							<p class="u-progress" title="已完成{{shop['canyurenshu']/shop['zongrenshu']*100}}%">
+								<span class="pgbar" style="width:{{shop['canyurenshu']/shop['zongrenshu']*100}}%;">
+	   <span class="pging"></span>
+								</span>
+							</p>
+							<ul class="Pro-bar-li">
+								<li class="P-bar01"><em>{{shop['canyurenshu']}}</em>已参与</li>
+								<li class="P-bar02"><em>{{shop['zongrenshu']}}</em>总需人次</li>
+								<li class="P-bar03"><em>{{shop['zongrenshu']-shop['canyurenshu']}}</em>剩余</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</li>
+			{{else}}
+			<li class="m-xs-li" txt="{{shop.time_H}}点" codeid="{{shop['id']}}">
+				<article class="clearfix m-xs-ct ">
+					<div class="u-xs-pic">
+						<div class="z-xs-pic">
+							<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true"><img class="img_cover" src="../../img/logo_gray.png" data-src="{{shop['thumb']}}"  onload="load(this)" border=0 /></a>
+						</div>
+						<div name="timerItem" class="z-xs-time" time="{{shop.xsjx}}"><em>00</em>时<em>00</em>分<em>00</em>秒<s class="z-aw-tblr"></s>
+						</div>
+					</div>
+					<div class="u-xs-con">
+						<a Address="index.item.html" data-id="{{shop.id}}" data-sub="true" class="gray6 z-tt">(第{{shop['qishu']}}期){{shop['title']}}</a>
+						<ins class="z-promo">价值:<em class="arial">￥{{shop['money']}}</em></ins>
+						<div class="Progress-bar">
+							<p class="u-progress" title="已完成{{shop['canyurenshu']/shop['zongrenshu']*100}}%"><span class="pgbar" style="width:{{shop['canyurenshu']/shop['zongrenshu']*100}}%;"><span class="pging"></span></span>
+							</p>
+							<ul class="Pro-bar-li">
+								<li class="P-bar01"><em>{{shop['canyurenshu']}}</em>已参与</li>
+								<li class="P-bar02"><em>{{shop['zongrenshu']}}</em>总需人次</li>
+								<li class="P-bar03"><em>{{shop['zongrenshu']-shop['canyurenshu']}}</em>剩余</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</li>
+			{{/if}} {{/each}}
+		</script>
+		<script type="text/template" id="recommend-tpl">
+			{{each shoplistrenqi as renqi index}}
+			<li id="{{renqi['id']}}">
+				<div class="f_bor_tr">
+					<div class="m-tj-pic">
+						<a Address="index.item.html" data-id="{{renqi.id}}" data-sub="true" class="u-lott-pic">
+							<img class="img_cover" src="../../img/logo_gray.png" data-src="{{renqi['thumb']}}" onload="load(this)" data-lazyload="{{renqi['thumb']}}" border=0 alt="" />
+						</a>
+						<ins class="u-promo">价值:￥{{renqi['money']}}</ins>
+					</div>
+					<div class="Progress-bar">
+						<p class="u-progress" title="已完成{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%">
+							<span class="pgbar" style="width:{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%;">
+		<span class="pging"></span>
+							</span>
+						</p>
+						<ul class="Pro-bar-li">
+							<li class="P-bar01"><em>{{renqi['canyurenshu']}}</em>已参与</li>
+							<li class="P-bar02"><em>{{renqi['zongrenshu']}}</em>总需人次</li>
+							<li class="P-bar03"><em>{{renqi['zongrenshu']-renqi['canyurenshu']}}</em>剩余</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.base64.js" ></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/fun.js"></script>
+		<script type="text/javascript" src="../../js/md5.min.js" ></script>
+		<script type="text/javascript" src="../../js/imgload.js" ></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/Flexslider.js"></script>
+		<script type="text/javascript" src="../../js/app/CountdownFun.js"></script>
+		<script type="text/javascript" src="../../js/app/Index.js"></script>
+	</body>
+
+</html>

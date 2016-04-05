@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>发现</title>
+    <link rel="stylesheet" href="../../css/mui.min.css" />
+    <link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+    <style>
+        .m-discover .mui-content{
+            background: #f4f4f4;
+        }
+        .m-discover .mui-table-view {
+            background: #f4f4f4;
+        }
+        .m-discover .mui-table-view-cell {
+            margin-top: 15px;
+            background: #fff;
+        }
+        .m-discover .mui-navigate-right b{
+            font-size: 16px;
+            margin-left: 15px;
+            line-height: 64px;
+        }
+        .m-discover .mui-navigate-right img{
+            width: 64px;
+            float: left;
+        }
+        .m-discover .mui-navigate-right:after, .m-discover .mui-push-right:after {
+            right: 15px;
+            content: '\e583';
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="m-discover">
+<div class="mui-content">
+    <div class="discover">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell" id="index.lottery.html" title="最新揭晓">
+                <a class="mui-navigate-right">
+                    <img src="../../img/di-blueprint.png" alt="">
+                    <b>最新揭晓</b>
+                </a>
+            </li>
+            <li class="mui-table-view-cell" id="index.shaidan.html" title="最新晒单">
+                <a class="mui-navigate-right">
+                    <img src="../../img/di-share.png" alt="">
+                    <b>最新晒单</b>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/mui.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+<script type="text/javascript" src="../../js/app/discover.js"></script>
+
+</body>
+
+</html>

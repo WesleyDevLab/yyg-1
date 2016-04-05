@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>晒单记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/iconfont1.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/single.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.cSingleInfo dl img {
+				border-radius: 35px;
+				height: 35px;
+				margin: 2px 0 0 1px;
+				width: 35px;
+			}
+			
+			.cSingleInfo dl a {
+				display: block;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<!-- 晒单记录 -->
+				<section class="goodsCon">
+					<div class="cSingleCon" id="commentsBox">
+
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script type="text/template" id="comments">
+			<p class="cEntry">已有
+				<em class="orange">{{sumzhan}}</em>个幸运者晒单，
+				<em class="orange">{{sumping}}</em>条评论！
+			</p>
+			{{if shopshaidan.length > 0}} {{each shopshaidan as value i}}
+			<div class="cSingleCon2" sd_id="{{value.sd_id}}">
+				<div class="cSingleInfo">
+					<dl class="fl" name="userindex" userID="{{value.uid}}">
+						<a><img src="{{value.img}}"><b></b></a>
+					</dl>
+					<div class="cSingleR m-round">
+						<div class="sanjiao"></div>
+						<ul>
+							<li>
+								<em class="blue" name="userindex" userID="{{value.uid}}">{{value.username}}</em><strong>：</strong>
+								<span>{{value.sd_title}}</span>
+							</li>
+							</li>
+							<li>
+								<h3><b class="time-discuss">{{time(value.sd_time)}}</b> </h3></li>
+							<li>
+								<p class="time-discuss">{{value.sd_content}}</p>
+							</li>
+							<li class="maxImg">
+								{{each value.sd_photolist as imgUrl i}}
+								<img src="{{imgUrl}}" /> {{/each}}
+							</li>
+							<li>
+								<div>
+									<div>
+										<img src="../../img/iconfont-xin.png" style="width: 10px;height: 10px" />
+										<span class="xianm">{{value.sd_zhan}}人羡慕嫉妒</span>
+										<img src="../../img/iconfont-pinglun.png" style="width: 10px;height: 10px;margin-left: 1em;" />
+										<span class="xianm">{{value.sd_ping}}条评论</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			{{/each}} {{else}}
+			<div class="haveNot z-minheight"><s></s>
+				<p>暂无晒单记录！</p>
+			</div>
+			{{/if}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/app/PeriodSlider.js"></script>
+		<script type="text/javascript" src="../../js/app/GoodsPicSlider.js"></script>
+		<script type="text/javascript" src="../../js/app/goodPost.js"></script>
+	</body>
+
+</html>

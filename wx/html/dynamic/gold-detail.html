@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>金币明细</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="gold-detail" style="margin-top: 0px;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell" id="jinbi">
+							可用金币<span class="orange" id="jinbishuliang"></span>
+							<button class="mui-btn" id="jinbiduihuan.html" title="金币兑换">
+								<a href="#"></a>金币兑换</button>
+						</li>
+					</ul>
+					<ul class="mui-table-view li-lieb">
+						<li class="mui-table-view-cell">
+							<div class="time">时间</div>
+							<div class="trench">渠道</div>
+							<div class="detail">明细</div>
+						</li>
+						<!--获取明细显示的父容器-->
+						<ul class="mui-table-view li-lieb" id="mingxi">
+
+						</ul>
+						<ul id="ulConsumption" class="m-userMoneylst m-Consumption" style="display: none;">
+							<div class="haveNot z-minheight">
+								<img src="../../img/zanwujilu.png" />
+								<p class="orange">暂无记录</p>
+							</div>
+						</ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/gold-detail.js"></script>
+		<script type="text/template" id="jinbimingxi">
+			{{each jinbimx as jinbi index}}
+			<li class="mui-table-view-cell">
+				<div class="time">{{jinbi.time | $Time}}</span>
+				</div>
+				<div class="trench">{{jinbi.content}}</div>
+				<div class="detail">
+					{{if jinbi.score > 0}}
+					<span class="detail-span1" style="color:green;">+{{jinbi.score}}</spana>
+								{{else}}
+								<span class="detail-span1">{{jinbi.score}}</spana>
+								{{/if}}
+								
+							</div>
+							</li>
+					{{/each}}
+			</script>
+	</body>
+</html>

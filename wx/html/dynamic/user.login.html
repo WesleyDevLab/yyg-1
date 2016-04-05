@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/login.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/app.css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			body {
+				background: #FEFEFE;
+			}
+			
+			.a1 {
+				display: inline;
+			}
+			
+			span {
+				color: #ADADAD;
+			}
+			.g-header .head-l{
+				left: 0;
+				top: 0;
+				height: 100%;
+				padding-right: 20px;
+			}
+			
+			.z-HReturn {
+				height: 100%;
+			}
+			
+			.left-img {
+				width: 12px;
+				margin-top: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="h5-1yyg-v1" id="content">
+			<header class="g-header">
+				<div class="head-l mui-action-back">
+					<a class="z-HReturn">
+						<img src="../../img/icon-left.png" class="left-img" />
+					</a>
+				</div>
+				<h2>登录</h2>
+			</header>
+			<section style="margin-top: 40px;">
+				<div class="imgLogo"><img src="../../img/108UI.png" /></div>
+				<div class="registerCon">
+					<div class="registerform" method="post" action="">
+						<ul id="denglu">
+							<li class="accAndPwd">
+								<dl>
+									<input id="txtAccount" type="text" placeholder="请输入您的手机号码/邮箱" class="lEmail"><s class="rs4"></s></dl>
+								<dl>
+									<input type="password" id="txtPassword" class="lPwd" placeholder="密码">
+									<s class="rs3"></s>
+									<div class="wjPwd" id="index.Findpossword.html" title="找回密码">忘记密码？</div>
+								</dl>
+							</li>
+							<li><a id="btnLogin" class="nextBtn  orgBtn">登 录</a>
+								<input name="hidLoginForward" type="hidden" id="hidLoginForward" value="1" />
+							</li>
+						</ul>
+						<ul class="accAndPwd" id="mima">
+							<li class="wjPwd" id="index.register.html" title="注册">新用户注册</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/UserLogin.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<title>最新揭晓</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/app/new_announce.css" />
+	</head>
+	<style type="text/css">
+		body {
+			background-color: #FFFFFF;
+		}
+		
+		.left {
+			border-bottom: 1px solid #EFEFEF;
+			background: #FFFFFF;
+		}
+	</style>
+
+	<body>
+		<div class="mui-content mui-scroll-wrapper" style="background-color:#FFFFFF;overflow: hidden;" id="refreshzuixin">
+			<div class="mui-scroll" style="padding-bottom: 50px;">
+				<div class="member" id="divjiexiao">
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/LotteryTimeFun.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/announced.js"></script>
+		<script type="text/template" id="jiexiao">
+			{{each listItems as renqi index}}
+			<div class="left" id="{{renqi.id}}" data-qishu="{{renqi.qishu}}" data-sid="{{renqi.sid}}">
+				<div class="goods">
+					<img src="{{renqi.thumb}}" />
+				</div>
+				<div class="wenzi mui-ellipsis-2">{{renqi.title}}</div>
+				<div class="timerItem">
+					<div class=" mui-ellipsis-2 top">
+						倒计时：
+					</div>
+					<div class="daojishi">
+						<span name="timerItem" id="{{renqi.id}}" class="f-limit-time-date" time="{{renqi.seconds}}"><em>00</em>:<em>00</em> &nbsp;&nbsp;<em>0</em><em>0</em><s class="z-aw-tblr"></s></span>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+	</body>
+
+</html>

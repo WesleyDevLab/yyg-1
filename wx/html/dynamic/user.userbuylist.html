@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>我的订单记录 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/member.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.mui-table-view-cell {
+				padding: 7px 15px;
+			}
+			
+			.mui-media-body {
+				margin-top: 0px;
+			}
+			
+			.ckan {
+				background: #F4F4F4;
+				padding: 0 10px;
+				line-height: 20px;
+			}
+			
+			.ckan span {
+				display: inline-block;
+				color: #333333;
+			}
+			
+			.ckan strong {
+				display: inline-block;
+				color: #999999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="h5-1yyg-v1" id="loadingPicBlock" style="margin-top: 45px;">
+			<!-- 栏目页面顶部 -->
+			<!-- 内页顶部 -->
+			<ul id="navBox" class="g-snav m_listNav">
+				<li class="g-snav-lst"><a class="gray9">全部<span></span></a><b></b></li>
+				<li class="g-snav-lst"><a class="gray9">进行中<span></span></a><b></b></li>
+				<li class="g-snav-lst"><a class="gray9">已揭晓<span></span></a></li>
+			</ul>
+		</div>
+		<!--根据状态删选订单  （列表）-->
+		<div class="gdju tab-1 active">
+			<ul id="gdju">
+				<li id="Ulists1">
+					<div class="prompLoad">数据加载中...</div>
+				</li>
+				<li id="Ulists2"></li>
+				<li id="Ulists3"></li>
+			</ul>
+		</div>
+		<script type="text/template" id="user_List">
+			{{each dingdanlist as dList index}} {{if dList.q_uid==null}}
+			<ul class="mui-table-view libia">
+				<li class="mui-table-view-cell mui-media" data-sid="{{dList.sid}}" data-qishu="{{dList.qishu}}">
+					<a style="padding: 15px 0;">
+						<img class="mui-media-object mui-pull-left" src="{{dList.thumb}}">
+						<div class="mui-media-body" style="padding: 0 5px;">
+							<span class="mui-ellipsis-2">第({{dList.qishu}})期{{dList.title}}</span>
+							<div class="Progress-bar" style="padding-top: 8px;">
+								<p class="u-progress" title="已完成{{dList['canyurenshu']/dList['zongrenshu']*100}}%">
+									<span class="pgbar" style="width:{{dList['canyurenshu']/dList['zongrenshu']*100}}%;">
+		<span class="pging"></span>
+									</span>
+								</p>
+								<ul class="Pro-bar-li">
+									<li class="P-bar01"><em>{{dList['canyurenshu']}}</em>已参与</li>
+									<li class="P-bar02"><em>{{dList['zongrenshu']}}</em>总需人次</li>
+									<li class="P-bar03"><em>{{dList['zongrenshu']-dList['canyurenshu']}}</em>剩余</li>
+								</ul>
+							</div>
+							<div style="position: relative;overflow: hidden;">
+								本次抢拍<span style="color: red;">{{dList.gonumber}}</span>次<b></b><em style="position: absolute;right: 0;top:0;color: #C80000;" class="chakan" title="{{dList.title}}" code="{{dList.goucode}}" num="{{dList.gonumber}}">查看抢拍号</em>
+							</div>
+
+						</div>
+					</a>
+				</li>
+			</ul>
+			{{else}}
+			<ul class="mui-table-view libia">
+				<li class="mui-table-view-cell mui-media" data-sid="{{dList.sid}}" data-qishu="{{dList.qishu}}">
+					<a style="padding: 20px 0;">
+						<img class="mui-media-object mui-pull-left" src="{{dList.thumb}}">
+						<div class="mui-media-body">
+							<span class="mui-ellipsis-2">第({{dList.qishu}})期{{dList.title}}</span>
+						</div>
+						<div style="position: relative;overflow: hidden;">
+							本次抢拍<span style="color: red;">{{dList.gonumber}}</span>次<b></b><em style="position: absolute;right: 0;top:0;z-index: 10;color: #C80000;" class="chakan" title="{{dList.title}}" code="{{dList.goucode}}" num="{{dList.gonumber}}">查看抢拍号</em>
+							<dl style="padding: 10px;">
+								<dd class="ckan" style="padding-top: 10px;"><span>获奖者：</span><strong>{{dList.q_user.username}}</strong></dd>
+								<dd class="ckan"><span>本期参与：</span><strong>{{dList.gonumber}}</strong></dd>
+								<dd class="ckan"><span>幸运号码：</span><strong>{{dList.q_user_code}}</strong></dd>
+								<dd class="ckan" style="padding-bottom: 10px;"><span>揭晓时间：</span><strong>{{dList.q_end_time |$Time}}</strong></dd>
+							</dl>
+						</div>
+
+					</a>
+				</li>
+			</ul>
+			{{/if}} {{/each}}
+		</script>
+		</div>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/userbuylist.js"></script>
+	</body>
+
+</html>

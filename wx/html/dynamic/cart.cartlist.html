@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>购物车 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/cartList.css" rel="stylesheet" type="text/css" />
+		<style>
+			.arial {
+				color: #f60;
+			}
+		</style>
+	</head>
+
+	<body style="background: #f4f4f4;">
+		<div id="refreshContainer" class="mui-content">
+			<div class="mui-scroll" style="padding-bottom: 50px;">
+				<div class="h5-1yyg-v1" id="loadingPicBlock">
+					<input name="hidLogined" type="hidden" id="hidLogined" value="1" />
+					<section class="clearfix g-Cart" id="shopingList">
+
+					</section>
+				</div>
+			</div>
+		</div>
+		<script type="text/template" id="cartList">
+			{{if shoppingList}}
+			<article class="clearfix m-round g-Cart-list">
+				<ul id="cartBody" class="mui-table-view">
+					{{each shoppingList as value i}}
+					<li id="shop{{value.id}}">
+						<a class="fl u-Cart-img" id="{{value.id}}" data-qishu="{{value.qishu}}">
+							<img src="{{value.thumb}}" border="0" alt="{{value.title}}" />
+						</a>
+						<div class="u-Cart-r">
+							<p class="z-Cart-tt"><a class="gray6" data-qishu="{{value.qishu}}">(第{{value.qishu}}期)<!--【预售】-->{{value.title}}</a></p>
+							{{if value.messges}}
+							<ins class="z-promo gray9">商品已失效</ins>
+							<p class="f-Cart-Other">
+								<a href="javascript:;" class="fr z-del" name="delLink" cid="{{value.cid}}" id="{{value.id}}"></a>
+							</p>
+							{{else}}
+							<ins class="z-promo gray9">剩余<em class="arial">{{value.shenyurenshu}}</em>人次</ins>
+							<p class="gray9">总共购买：<em class="arial">{{value.num}}</em>人次/<em class="grayness arial">￥{{value.yunjiage}}</em></p>
+							<p class="f-Cart-Other">
+								<a href="javascript:;" class="fr z-del" name="delLink" cid="{{value.cid}}" id="{{value.id}}"></a>
+								<a href="javascript:(0);" class="fl z-jian {{if value.num ==1 }}z-jiandis{{/if}}" data-type="subtraction" id="{{value.id}}">-</a>
+								<input id="txtNum4" name="num" type="text" maxlength="7" value="{{value.num}}" class="fl z-amount" style="height: 30px;" data-id="{{value.id}}" />
+								<a href="javascript:(1);" class="fl z-jia {{if value.num >= value.shenyurenshu}}z-jiadis{{/if}}" data-type="add" id="{{value.id}}">+</a>
+								<input type="hidden" value="{{value.num}}" />
+								<!--默认值-->
+								<input type="hidden" value="{{value.shenyurenshu}}" />
+								<!--最大值-->
+							</p>
+							{{/if}}
+
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+			</article>
+			<div id="divBtmMoney" class="g-Total-bt">
+				<p>总共购买
+					<span class="orange arial z-user">{{shopNum}}</span>个商品 合计金额：
+					<span class="orange arial" id="sums">{{total()}}</span>元</p>
+				<a class="orgBtn">结 算</a>
+			</div>
+			{{else}}
+			<div id="divNone" class="haveNot z-minheight"><s></s>
+				<p>抱歉，您的购物车没有商品记录！</p>
+			</div>
+			{{/if}}
+		</script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/CartindexFun.js"></script>
+	</body>
+
+</html>

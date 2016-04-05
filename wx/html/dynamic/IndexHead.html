@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>全民抢拍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/index.css" rel="stylesheet" type="text/css" />
+		<style>
+			.header .fl {
+				display: none;
+			}
+			.header .logo img{
+				margin-top: -5px;
+			}
+			.header .mui-action-back {
+				display: none;
+			}
+			
+			.left-img {
+				width: 12px;
+				margin-top: 9px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header mui-bar mui-bar-nav g-header">
+
+			<div class="head-l mui-action-back">
+				<a class="z-HReturn mui-action-back">
+					<img src="../../img/icon-left.png" class="left-img" />
+				</a>
+			</div>
+			<h1 class="fl logo">
+		            <img src="../../img/logo_wap.png" height="40px">
+			</h1>
+			<!--<div class="fr head-r">
+				<a href="user.login.html" class="z-Member"></a>
+				<a id="btnCart" Address="cart.cartlist.html" class="z-shop"><em>1</em></a>
+			</div>-->
+		</header>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script>
+			var variableName = "__view_array__ __IDENTITY__ __uuid__ __callbacks__ __callback_id__ id  getMetrics onCallback addEventListener removeEventListener show close setStyle nativeInstanceObject hide setVisible isVisible setJsFile appendJsFile setContentVisible opener opened remove removeFromParent parent children getURL getTitle getStyle loadURL loadData stop reload draw back forward canBack canForward clear evalJS test append setPullToRefresh endPullToRefresh setBounce resetBounce setBlockNetworkImage captureSnapshot clearSnapshot";//mui默认包含变量名
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				console.log(self.id)
+				var urlAddress = self.Address;
+				if (self.wType) {
+					$(".mui-action-back").show();
+					$(".header").append("<h2>" + self.wName + "</h2>")
+				} else {
+					//$(".fl").show();
+					if (urlAddress != "index.index.html") {
+						$(".header").append("<h2>" + self.wName + "</h2>");
+						$(".fl").hide();
+					}else {
+						$(".header").append("<h2>全民抢拍</h2>");
+					}
+				}
+				var extras = {};
+				//去除不使用的变量，将可用变量存到extras，传过去
+				for (value in self) {
+					if (variableName.indexOf(value) < 0) {
+						extras[value] = self[value];
+					}
+				}
+				extras.windowID=plus.webview.currentWebview().id;
+				//console.log(JSON.stringify(extras))
+				mui.init({
+					subpages: [{
+						id: "index" + urlAddress,
+						url: urlAddress,
+						styles: {
+							top: '44px',
+							bottom: 0,
+							bounce: 'vertical'
+						},
+						extras: extras
+					}]
+				});
+			})
+
+			/*function menu() {
+				$(".header").append('<div class="fr head-r"><a class="menu"></a></div>');
+				$(".menu").click(function() {
+					plus.webview.getWebviewById("H51BFA684").evalJS('Simulation("glist")');
+				});
+			}*/
+		</script>
+	</body>
+
+</html>

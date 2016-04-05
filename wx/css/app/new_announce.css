@@ -1,0 +1,48 @@
+.member{width: 100%;height: 240px;background: #FFFFFF;}    
+.left{width: 50%;height: 240px;float: left;border-right: 1px solid #EFEFEF;}
+.goods{width: 100%;height: 120px;text-align: center;padding-top: 10px;}
+.goods img{width: 100px;}
+.wenzi{font-size: 15px;margin: 0 10px;white-space:nowrap;overflow: hidden;height: 20px;text-overflow:ellipsis}
+.top{margin-top: 8px;}
+.daojishi{text-align: center;width: 100%;height: 30px;margin-top: 15px;font-size: 15px;color: #D63049;}
+.juli{padding-left: 10px;}
+
+
+.timerItem dl{margin: 0;padding-top:10px ;}
+.timerItem dd{font-size: 12px;margin: 0;padding:0 10px;line-height: 16px;overflow: hidden;min-height: 16px;position: relative;}
+.timerItem dd span{color: #5b5b5b;display:inline-block;position:absolute;top:0px;left: 10px;}
+.timerItem dd strong{font-weight: normal;display:block;margin-left: 60px;}
+.timerItem dd:nth-child(1) strong{color:#004499;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.timerItem dd:nth-child(2) strong{color:#D63049;}
+.timerItem dd:nth-child(3) strong{color: #5b5b5b;}
+.timerItem dd:last-child strong{color: #a0a0a0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>地址列表</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+
+	</head>
+	<style>
+		.deleimg {
+			width: 20px;
+			height: 15px;
+		}
+		
+		.deletebtn {
+			border-radius: 10px;
+			float: right;
+		}
+		/*sez{position: absolute;top:0px;left: 0px;}
+		mui-radio{padding-left: 0px;}*/
+		
+		.f1 {
+			margin-left: -20px;
+		}
+		
+		.f2 {
+			position: absolute;
+			top: 0px;
+			right: 10px;
+		}
+		
+		.tishi {
+			width: 150px;
+			height: 100px;
+			background-color: #FAFAFA;
+			float: left;
+			position: absolute;
+			top: 40%;
+			left: 30%;
+			display: none;
+		}
+		
+		.dd {
+			text-align: center;
+			padding: 11px;
+		}
+		
+		.btn {
+			border-radius: 10px;
+		}
+		
+		.dimg {
+			float: right;
+			position: absolute;
+			margin-top: -47px;
+			margin-left: 100px;
+		}
+		
+		.nichname {
+			position: relative;
+		}
+		
+		#ulConsumption {
+			display: none;
+		}
+		
+		div#pageDialogBG {
+			background: #000 none repeat scroll 0 0;
+			display: none;
+			height: 100%;
+			left: 0;
+			opacity: 0.3;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 101;
+			border-radius: 0;
+		}
+	</style>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="control-address" style="margin-top: 0px;">
+					<div class="serr">
+						<div class="address-li">地址列表</div>
+						<button class="mui-btn" id="add-address.html" title="添加地址">添加</button>
+					</div>
+					<div class="li-div" id="address">
+
+					</div>
+					<ul id="ulConsumption" class="m-userMoneylst m-Consumption">
+						<div class="haveNot z-minheight">
+							<img src="../../img/zanwujilu.png" />
+							<p class="orange">暂无记录</p>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/pageDialog.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/control-address.js"></script>
+		<script type="text/template" id="getaddress">
+			{{each useraddrs as address index}}
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="nichname">
+						地址：{{address['addr']}}
+					</div>
+					<div class="nichname">
+						街道：{{address['street']}}
+					</div>
+					<div class="nichname">
+						邮编：{{address['youbian']}}
+					</div>
+					<div class="nichname">
+						收货人：{{address['shouhuoren']}}
+					</div>
+					<div class="nichname">
+						手机号：{{address['mobile']}}
+					</div>
+					<div class="nichname">
+						<div class="mui-input-row mui-radio mui-left f1" data-id="{{address['id']}}">
+							<label>设为默认地址</label>
+							<input name="radio1" type="radio" id="redio" data-id="{{address['id']}}" {{if address.default=="Y" }}checked="true" {{/if}}>
+						</div>
+						<div class="mui-input-row f2">
+							<button class="deletebtn" id="deletas" name="deletas" data-id="{{address['id']}}"><img src="../../img/delete.png" class="deleimg"></img>删除</button>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+			{{/each}}
+		</script>
+	</body>
+
+</html>

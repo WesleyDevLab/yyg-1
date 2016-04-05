@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<title>支付成功</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<style>
+			body {
+				background: #EEEEEE;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="PromptInfo">恭喜您，参与成功！
+					<br> 请等待系统为您揭晓！
+				</div>
+				<div class="prompBut"><span id="classify.html" title="产品分类">继续购买</span><span id="MyOrder.html" title="我的订单">查看抢拍记录</span></div>
+				<div class="Promptbody" id="prompdata">
+					<div class="prompLoad">数据加载中...</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/template" id="prompBody">
+
+			<div class="Promptitle">您成功参与了<b>{{shopNum()}}</b>件商品共<b>{{popNum()}}</b>人次抢拍，信息如下：</div>
+			{{each listItems as value i}}
+			<dl class="PrompList" id="{{value.id}}" data-qishu="{{value.qishu}}" data-sid="{{value.sid}}">
+				<dt><h1>{{value.title}}</h1><strong><b>{{value.gonumber}}</b>人次</strong></dt>
+				<dd><span>商品期号:</span><strong>第{{value.qishu}}期</strong></dd>
+				<dd><span class="munlist">抢拍号码:</span><strong class="munlist">{{value.goucode | goucode}}</strong></dd>
+			</dl>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script>
+			mui.plusReady(function() {
+				var oderID = plus.webview.currentWebview().winID;
+				setTimeout("loadData('" + oderID + "')", 200);
+				console.log(oderID);
+				var old_back = mui.back;
+				mui.back = function() {
+					location.href = Gobal.server_url_no + "/wx/index.html";
+				}
+			});
+
+			function loadData(order) {
+				console.log(Gobal.server_url + "/mobile/ajax/getPayResult/" + order)
+				$.ajax({
+					type: "get",
+					url: Gobal.server_url + "/mobile/ajax/getPayResult/" + order,
+					async: true,
+					dataType: "json",
+					timeout: 10000,
+					success: function(res) {
+						template.config("escape", false);
+						template.helper("goucode", function(goucode) {
+							var goucodelist = goucode.split(",");
+							var html = "";
+							for (value in goucodelist) {
+								html += "<em>" + goucodelist[value] + "</em>"
+							}
+							return html;
+						});
+						template.helper("shopNum", function() {
+							return res.listItems.length;
+						});
+						template.helper("popNum", function() {
+							var num = 0;
+							for (value in res.listItems) {
+								num += Number(res.listItems[value].gonumber);
+							}
+							return num;
+						});
+						var html = template("prompBody", res);
+						document.getElementById("prompdata").innerHTML = html;
+						console.log(JSON.stringify(res))
+					},
+					error: function(res) {
+						console.log(JSON.stringify(res))
+					}
+				});
+				bing();
+			}
+
+			function bing() {
+				mui(".prompBut").on("click", "span", function() {
+					var address = this.getAttribute("id");
+					var title = this.getAttribute("title");
+					if ("classify.html" == address) {
+						location.href = Gobal.server_url_no + "/wx/index.html";
+					}
+					mui.openWindow({
+						url: "IndexHead.html",
+						id: address,
+						extras: {
+							Address: address,
+							wType: 'back',
+							wName: title,
+							winID: plus.webview.currentWebview().id
+						}
+					});
+				});
+				mui("#prompdata").on("click", ".PrompList", function() {
+					var sid = this.getAttribute("data-sid");
+					var qishu = this.getAttribute("data-qishu");
+					mui.openWindow({
+						url: "IndexHead.html",
+						id: "index.item" + sid,
+						extras: {
+							Address: "index.item.html",
+							wType: 'back',
+							wName: "商品详情",
+							sid: sid,
+							qishu: qishu
+						}
+					});
+				});
+			}
+		</script>
+	</body>
+
+</html>

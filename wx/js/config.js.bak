@@ -1,0 +1,5 @@
+var Gobal = {
+	server_url : "http://www.bgsg.net/?",
+	server_url_t : "http://www.bgsg.net",
+	image_url:"http://www.bgsg.net/statics/uploads"
+};

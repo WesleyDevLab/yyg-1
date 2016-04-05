@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>分享晒单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/single.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+	</head>
+
+	<body>
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view mui-table-view-chevron">
+					<div id="navBox" class="g-snav m_listNav">
+						<div class="g-snav-lst z-sgl-crt"><a class="gray9">最新晒单</a><b></b></div>
+						<div class="g-snav-lst"><a class="gray9">人气晒单</a><b></b></div>
+						<div class="g-snav-lst"><a class="gray9">评论最多</a></div>
+					</div>
+					<!-- 晒单列表 -->
+					<section>
+						<div class="cSingleCon">
+							<div class="cSingleCon2" id="sd_time"><span style="display: block;text-align: center;">正在加载中...</span></div>
+						</div>
+						<div class="cSingleCon">
+							<div class="cSingleCon2" id="sd_zhan"></div>
+						</div>
+						<div class="cSingleCon">
+							<div class="cSingleCon2" id="sd_ping"></div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		<script type="text/template" id="lotter-shaidan">
+			{{each maxcomment as value index}}
+			<div class="cSingleInfo" sd_id="{{value.sd_id}}">
+				<dl class="fl" name="userindex" userID="{{value.uid}}">
+					<a address="#">
+						<img src="{{value.userimg}}">
+						<!--<b></b>图标-->
+					</a>
+				</dl>
+				<div class="cSingleR m-round">
+					<ul>
+						<li>
+							<em class="blue" id="{{value.uid}}" name="userindex" userID="{{value.uid}}">{{value.username}}</em>
+							<span name="userindex" userID="{{value.uid}}"><strong class="c9">：</strong>{{value.sd_title}}</span>
+							<h5>{{value.sd_time}}</h5>
+						</li>
+						<li>
+							<p>{{value.sd_content}}</p>
+						</li>
+						{{if value.sd_photolist}} {{if value.sd_photolist.length>0}}
+						<li class="maxImg">
+							{{each value.sd_photolist as imgSrc}}
+							<img src="{{imgSrc}}"> {{/each}}
+						</li>
+						{{/if}} {{/if}}
+						<li>
+							<dd>
+								<!--<s></s>图标-->
+								<strong>{{value.sd_zhan}}</strong>人羡慕嫉妒
+							</dd>
+							<dd>
+								<!--<i></i>图标-->
+								<strong>{{value.sd_ping}}</strong>条评论
+							</dd>
+						</li>
+					</ul>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/indexShaiDan.js"></script>
+	</body>
+
+</html>

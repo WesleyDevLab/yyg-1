@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<title>产品分类</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/app/comm.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/app/classify.css" />
+		<style>
+			.mui-bar-nav~.mui-content .mui-pull-top-pocket{margin-left: 50px;}
+			.Progress-bar ul.Pro-bar-li{margin-top: -5px;}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="mui-content  mui-scroll-wrapper" id="refreshContainer">
+			<!--商品加载列表-->
+			<div class="rightone">
+				<ul class="mui-table-view gtji1" id="goodsListBox">
+
+				</ul>
+			</div>
+		</div>
+		<!--导航栏列表-->
+		<div class="leftone" style="position: fixed;">
+			<ul class="mui-table-view" id="divGoodsNav">
+
+			</ul>
+		</div>
+		<!--购物车弹出框-->
+		<div id="pageDialogBG" class="pageDialogBG">
+			<div class="Prompt"></div>
+		</div>
+		<!--购物车弹出框-->
+		<script type="text/html" id="shopClass">
+			<li class="mui-table-view-cell mui-ellipsis active" id="0" order="0">全部</li>
+			{{each categoryx as value i}}
+			<li id="{{value.cateid}}" parentid="{{value.parentid}}" class="mui-table-view-cell mui-ellipsis" order="{{value.order}}">{{value.name}}
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/html" id="shopList">
+			{{each shoplist as data i}}
+			<li class="mui-table-view-cell gtji" id="{{data.id}}" data-qishu="{{data.qishu}}">
+				<div class="goodss">
+					<img src="{{data.thumb}}" />
+				</div>
+				<div class="goodsr">
+					<span class="mui-ellipsis">(第{{data.qishu}}期){{data.title}}</span>
+					<div class="f-de">
+						<div class="Progress-bar" style="margin-top: 20px;">
+							<p class="u-progress" title=""><span class="pgbar" style="width:{{(data.canyurenshu / data.zongrenshu)*100}}%"><span class="pging"></span></span>
+							</p>
+							<ul class="Pro-bar-li">
+								<li class="P-bar01"><em>{{data.canyurenshu}}</em>已参与</li>
+								<li class="P-bar02"><em>{{data.zongrenshu}}</em>总需人次</li>
+								<li class="P-bar03"><em>{{data.shenyurenshu}}</em>剩余</li>
+							</ul>
+						</div>
+					</div>
+					<div class="f-fe" codeid="{{data.id}}" data-qishu="{{data.qishu}}">
+						<img src="../../img/card-hon.png" />
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/index.glist.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,1273 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"],
+	"id": "weixin",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "全名抢拍微信",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.0",/*应用版本名称*/
+		"code": "83"
+	},
+	"description": "",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": "http://www.dcloud.io"
+	},
+	"permissions": {
+		"Accelerometer": {
+			"description": "访问加速度感应器"
+		},
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		"Contacts": {
+			"description": "访问系统联系人信息"
+		},
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Geolocation": {
+			"description": "访问位置信息"
+		},
+		"Invocation": {
+			"description": "使用Native.js能力"
+		},
+		
+		"Orientation": {
+			"description": "访问方向感应器"
+		},
+		"Proximity": {
+			"description": "访问距离感应器"
+		},
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		"Barcode": {
+			"description": "管理二维码扫描插件"
+		},
+		"Maps": {
+			"description": "管理地图插件"
+		},
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Webview": {
+			"description": "窗口管理"
+		},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"NativeObj": {
+			"description": "原生对象"
+		},
+		"ipaynow": {
+			"description": "聚合支付"
+		},
+		"Share": {}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false,
+			"delay": "2000"
+		},
+		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {"plugins":{"share":{"qq":{"appid":"d","description":"QQ分享"},"sina":{"appkey":"d","appsecret":"d","redirect_uri":"d","description":"可选，新浪微博分享"},"weixin":{"appid":"vfd","appsecret":"d","description":"可选，微信分享"},"tencent":{"appkey":"d","appsecret":"d","redirect_uri":"d","description":"可选，腾讯微博分享"}}},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_MOCK_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+			},
+			"orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png",
+						"retina8": "unpackage/res/icons/180x180.png",
+						"settings-retina8": "unpackage/res/icons/87x87.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png"
+					}
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": ""
+					},
+					"ipad": {
+						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "E:/令鹿/一键夺宝/UI/android/240x320.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "E:/令鹿/一键夺宝/UI/android/320x480.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "E:/令鹿/一键夺宝/UI/android/480x800.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "E:/令鹿/一键夺宝/UI/android/720x1280.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "E:/令鹿/一键夺宝/UI/android/1080x1920.png"
+				}
+			},
+			"debug": true
+		}
+	},
+	"fullscreen": true,
+	"dependencies": {
+		"pages": {
+			"html/dynamic/discover.html": {
+				"resources": [
+					"js/app/discover.js",
+					"fonts/mui.ttf",
+					"css/home/index.css",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"index.html": {
+				"resources": [
+					"html/dynamic/IndexHead.html",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"img/c-picture2.png",
+					"css/app/comm.css",
+					"js/global.js",
+					"js/index.js",
+					"js/config.js",
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					null,
+					"js/Countdown.js"
+				],
+				"refer": [
+					"html/guide.html",
+					"html/start.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/IndexHead.html": {
+				"resources": [
+					"html/dynamic/discover.html",
+					"html/dynamic/index.glist.html",
+					"img/menu.png",
+					"img/logo_wap.png",
+					"css/app/comm.css",
+					"html/dynamic/cart.cartlist.html",
+					"css/app/index.css",
+					"html/dynamic/user.index.html",
+					"img/icon-left.png",
+					"html/dynamic/index.index.html",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"html/dynamic/index.shaidan.html",
+					"html/dynamic/index.lottery.html",
+					"html/dynamic/cart.payment.html",
+					"fonts/mui.ttf",
+					"html/dynamic/index.item.html",
+					"html/dynamic/index.autolottery.html",
+					"html/dynamic/user.userbalance.html",
+					"html/dynamic/user.userbuylist.html",
+					"html/dynamic/my-order.html",
+					"html/dynamic/set.html",
+					"html/dynamic/change-password.html",
+					"html/dynamic/control-address.html",
+					"html/dynamic/buyrecords.html",
+					"html/dynamic/index.goodspost.html",
+					"html/dynamic/index.goodsdesc.html",
+					"html/dynamic/add-address.html",
+					"html/dynamic/my-packet.html",
+					"html/dynamic/gold-detail.html",
+					"html/dynamic/index.calResult.html",
+					"html/dynamic/index.userindex.html",
+					null,
+					"html/dynamic/index.detail.html",
+					"html/dynamic/MyOrder.html",
+					"html/dynamic/user.singlelist.html",
+					"html/dynamic/IWantshaidan.html",
+					"html/dynamic/index.register.html",
+					"html/dynamic/index.Findpossword.html",
+					"html/dynamic/user.recharge.html",
+					"html/dynamic/jinbiduihuan.html",
+					"html/dynamic/user.orderlist.html",
+					"html/dynamic/Success.html",
+					"html/dynamic/MyHBao.html",
+					"html/dynamic/WantPromote.html"
+				],
+				"refer": [
+					"html/dynamic/new_announce.html",
+					"html/dynamic/user.html",
+					"html/dynamic/classify.html",
+					"html/dynamic/wenzhang.html",
+					"html/dynamic/wenzhangxiang.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.glist.html": {
+				"resources": [
+					"js/app/index.glist.js",
+					"img/card-hon.png",
+					"css/app/goods.css",
+					"js/app/CountdownFun.js",
+					"js/app/Flexslider.js",
+					"js/mui.min.js",
+					"css/app/comm.css",
+					"js/global.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/template.js",
+					"css/home/index.css",
+					"js/config.js",
+					"img/setIcon.png",
+					"img/No.png",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/cart.cartlist.html": {
+				"resources": [
+					"css/app/cartList.css",
+					"img/setIcon.png",
+					"img/shoubiao.png",
+					"css/app/comm.css",
+					"js/mui.js",
+					"js/template.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/config.js",
+					"js/app/CartindexFun.js",
+					"js/global.js",
+					"js/app/pageDialog.js",
+					"js/app/BottomFun.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/guide.html": {
+				"resources": [
+					"img/guide2.png",
+					"img/guide1.png",
+					"img/guide3.png",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/user.index.html": {
+				"resources": [
+					"js/app/beifen/UserIndex.js",
+					"img/touch-icon.png",
+					"css/app/member.css",
+					"css/home/index.css",
+					"css/app/comm.css",
+					"js/template.js",
+					"js/mui.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/config.js",
+					"html/dynamic/my-order.html",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/immersed.js",
+					"js/global.js"
+				],
+				"refer": [
+					"html/dynamic/user.login.html",
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.index.html": {
+				"resources": [
+					"js/app/Index.js",
+					"js/md5.min.js",
+					"img/translate.png",
+					"js/imgload.js",
+					"js/fun.js",
+					"img/loading.gif",
+					"js/app/Flexslider.js",
+					"js/app/CountdownFun.js",
+					"css/app/comm.css",
+					"img/icon-gouwuche.png",
+					"css/home/index.css",
+					"js/mui.js",
+					"js/template.js",
+					"js/jquery.base64.js",
+					"js/jquery.min.js",
+					"css/app/index.css",
+					"img/setIcon.png",
+					"css/mui.min.css",
+					"js/config.js",
+					"js/global.js",
+					null,
+					"img/logo_gray.png",
+					"img/Bask.png",
+					"img/problem.png",
+					"img/classify.png",
+					"js/Countdown.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/start.html": {
+				"resources": [
+					"img/guide1.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/jquery.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/index.shaidan.html": {
+				"resources": [
+					"js/indexShaiDan.js",
+					"css/app/comm.css",
+					"css/home/index.css",
+					"css/app/single.css",
+					"js/template.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/global.js",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.lottery.html": {
+				"resources": [
+					"css/app/lottery.css",
+					"css/app/comm.css",
+					"css/home/index.css",
+					"js/app/index.lottery.js",
+					"js/template.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/global.js",
+					"img/setIcon.png"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/my-order.html": {
+				"resources": [
+					"img/touch-icon.png",
+					"css/app/member.css",
+					"css/home/index.css",
+					"js/app/beifen/myOrder.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"css/app/comm.css",
+					"html/dynamic/control-address.html",
+					"js/template.js",
+					"js/mui.js",
+					"js/config.js",
+					"img/iconfont-guanbi.png",
+					"html/dynamic/user.recharge.html",
+					"js/upImg.js",
+					"js/jsfun.js",
+					"js/z-app.js",
+					"js/app/GoodsPicSlider.js",
+					"js/app/PeriodSlider.js",
+					"js/app/pageDialog.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html",
+					"html/dynamic/change_photo.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/cart.payment.html": {
+				"resources": [
+					"img/gou.png",
+					"css/app/comm.css",
+					"css/app/cartList.css",
+					"js/global.js",
+					"js/mui.js",
+					"js/template.js",
+					"js/app/PaymentFun.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"img/setIcon.png",
+					"js/app/pageDialog.js",
+					"js/ipaynow.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.item.html": {
+				"resources": [
+					"js/app/GoodsPicSlider.js",
+					"js/app/PeriodSlider.js",
+					"css/app/goods.css",
+					"css/app/comm.css",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/app/index.item.js",
+					"js/config.js",
+					"img/preIcon.png",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/global.js",
+					"img/setIcon.png",
+					null
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.autolottery.html": {
+				"resources": [
+					"js/app/AutoLottery.js",
+					"js/app/CountdownFun.js",
+					"css/app/AutoLottery.css",
+					"css/app/comm.css",
+					"js/global.js",
+					"js/app/Flexslider.js",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"img/setIcon.png",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/app/GoodsPicSlider.js",
+					"js/app/PeriodSlider.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/control-address.html": {
+				"resources": [
+					"html/dynamic/my-order.html",
+					"js/app/beifen/control-address.js",
+					"img/icon-left.png",
+					"img/iconfont-guanbi.png",
+					"fonts/mui.ttf",
+					"css/app/comm.css",
+					"img/delete.png",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"img/zanwujilu.png",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/app/pageDialog.js",
+					"js/mui.min.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/user.login.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/app/comm.css",
+					"css/home/index.css",
+					"js/app/beifen/UserLogin.js",
+					"img/icon-left.png",
+					"css/app/login.css",
+					"js/config.js",
+					"fonts/mui.ttf",
+					"css/home/app.css"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/user.userbalance.html": {
+				"resources": [
+					"js/app/beifen/user.userbalance.js",
+					"css/app/member.css",
+					"css/app/comm.css",
+					"img/zanwujilu.png",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/user.userbuylist.html": {
+				"resources": [
+					"css/app/member.css",
+					"css/app/comm.css",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"img/setIcon.png",
+					"js/config.js",
+					"js/app/beifen/userbuylist.js",
+					"js/jquery.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/set.html": {
+				"resources": [
+					"img/geren.png",
+					"css/app/comm.css",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/change-password.html": {
+				"resources": [
+					"img/iconfont-yaochi.png",
+					"css/app/comm.css",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"js/app/beifen/changePwd.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/buyrecords.html": {
+				"resources": [
+					"js/app/buyrecords.js",
+					"css/app/comm.css",
+					"js/global.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/template.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"css/app/goods.css",
+					"css/app/index.css",
+					"img/setIcon.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/index.goodspost.html": {
+				"resources": [
+					"img/honbao.png",
+					"img/iconfont-pinglun.png",
+					"css/iconfont1.css",
+					"img/touch-icon.png",
+					"img/home-banner.png",
+					"css/app/comm.css",
+					"img/iconfont-xin.png",
+					"css/app/single.css",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"css/home/index.css",
+					"img/share-img.png",
+					"js/app/GoodsPicSlider.js",
+					"js/app/PeriodSlider.js",
+					"js/global.js",
+					"js/template.js",
+					"js/mui.js",
+					"js/config.js",
+					"img/setIcon.png"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.goodsdesc.html": {
+				"resources": [
+					"css/app/comm.css",
+					"css/mui.min.css",
+					"css/app/goods.css",
+					"css/home/index.css",
+					"js/mui.js",
+					"js/jquery.min.js",
+					"img/setIcon.png",
+					"js/app/gooddesc.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/add-address.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.picker.min.js",
+					"js/app/beifen/add-address.js",
+					"css/home/mui.picker.min.css",
+					"css/app/comm.css",
+					"css/home/app.css",
+					"js/city.data-3.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/mui.poppicker.js",
+					"js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/my-packet.html": {
+				"resources": [
+					"img/iconfont-hongbao.png",
+					"css/app/comm.css",
+					"js/app/beifen/my-packet.js",
+					"img/zanwujilu.png",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/gold-detail.html": {
+				"resources": [
+					"css/app/comm.css",
+					"img/zanwujilu.png",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"js/app/beifen/gold-detail.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.calResult.html": {
+				"resources": [
+					"css/home/index.css",
+					"img/icon-left.png",
+					"css/app/lottery.css",
+					"css/app/comm.css",
+					"js/app/CalResultFun.js",
+					"js/jquery.min.js",
+					"js/global.js",
+					"js/template.js",
+					"js/mui.js",
+					"js/config.js",
+					"js/app/BottomFun.js",
+					"img/mainIcon.png",
+					"js/app/GoodsPicSlider.js",
+					"js/app/PeriodSlider.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/index.userindex.html": {
+				"resources": [
+					"css/app/userindex.css",
+					"css/app/comm.css",
+					"css/home/index.css",
+					"css/mui.min.css",
+					null,
+					"js/app/GoodsPicSlider.js",
+					"js/jquery.min.js",
+					"js/app/PeriodSlider.js",
+					"js/global.js",
+					"js/template.js",
+					"js/mui.js",
+					"js/app/index.item.js",
+					"js/config.js",
+					"js/app/userindex.js",
+					"js/app/userindexFun.js",
+					"img/banner.jpg",
+					"img/setIcon.png"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.detail.html": {
+				"resources": [
+					"img/iconfont-star.png",
+					"img/setIcon.png",
+					"img/touch-icon.png",
+					"img/iconfont-fenxian.png",
+					"img/home-banner.png",
+					"css/app/comm.css",
+					"js/global.js",
+					"js/template.js",
+					"img/goods.png",
+					"js/app/PostListFun.js",
+					"css/home/index.css",
+					"js/mui.js",
+					"css/app/single.css",
+					"js/config.js",
+					"js/jquery.min.js",
+					"js/share.js",
+					"img/share-img.png",
+					"js/app/pageDialog.js",
+					"img/iconfont-fenxiang (3).png",
+					"img/iconfont-fenxiang (2).png"
+				],
+				"refer": [
+					"html/dynamic/user.login.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/MyOrder.html": {
+				"resources": [
+					"js/app/beifen/myOrder.js",
+					"css/app/member.css",
+					"css/app/comm.css",
+					"js/template.js",
+					"js/mui.js",
+					"js/config.js",
+					"css/home/index.css",
+					"js/jquery.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/user.singlelist.html": {
+				"resources": [
+					"js/app/beifen/user.singlelist.js",
+					"css/app/comm.css",
+					"img/zanwujilu.png",
+					"fonts/mui.ttf",
+					"css/app/member.css",
+					"js/template.js",
+					"css/home/index.css",
+					"js/config.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/IWantshaidan.html": {
+				"resources": [
+					"img/honbao.png",
+					"js/app/beifen/IWantshaidan.js",
+					"css/app/register.css",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/mui.js",
+					"js/config.js",
+					"css/home/feedback-page.css",
+					"js/app/feedback-page.js",
+					"img/iconfont-tianjia.png",
+					"js/mui.view.js",
+					"js/jquery.form.min.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/index.register.html": {
+				"resources": [
+					"css/app/register.css",
+					"js/mui.js",
+					"js/app/beifen/userRegister.js",
+					"html/dynamic/index.register.html",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/index.Findpossword.html": {
+				"resources": [
+					"css/app/register.css",
+					"js/app/beifen/index.Findpossword.js",
+					"html/dynamic/index.Findpossword.html",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/mui.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/user.recharge.html": {
+				"resources": [
+					"css/app/member.css",
+					"css/app/comm.css",
+					"css/home/index.css",
+					"img/icon-left.png",
+					"js/app/beifen/myOrder.js",
+					"js/jquery.min.js",
+					"js/mui.js",
+					"js/config.js",
+					"js/app/beifen/recharge.js",
+					"img/member-icon.png",
+					"js/ipaynow.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/change_photo.html": {
+				"resources": [
+					"js/zepto.min.js",
+					"css/iconfont.css",
+					"css/user-info.css",
+					"css/mui.min.css",
+					"js/jsfun.js",
+					"js/mui.js",
+					"js/z-app.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/jinbiduihuan.html": {
+				"resources": [
+					"css/app/register.css",
+					"js/app/beifen/jinbiduihuan.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/mui.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/user.orderlist.html": {
+				"resources": [
+					"js/app/OrderList.js",
+					"css/app/member.css",
+					"css/app/comm.css",
+					"img/zanwujilu.png",
+					"js/template.js",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/config.js",
+					"img/20141024155736176.jpg",
+					"js/jquery.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/Success.html": {
+				"resources": [
+					"img/sure-@2x.png",
+					"js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/MyHBao.html": {
+				"resources": [
+					"css/app/comm.css",
+					"js/app/beifen/UserIndex.js",
+					"js/jquery.min.js",
+					"css/app/member.css",
+					"js/immersed.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/global.js",
+					"css/home/index.css",
+					"js/mui.js",
+					"js/template.js",
+					"js/config.js",
+					"js/app/beifen/MyHBao.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/WantPromote.html": {
+				"resources": [
+					"img/member-icon.png",
+					"js/jquery.min.js",
+					"js/ipaynow.js",
+					"css/app/member.css",
+					"css/app/comm.css",
+					"js/mui.js",
+					"css/home/index.css",
+					"js/app/beifen/recharge.js",
+					"js/config.js",
+					"img/erweima.png",
+					"js/app/beifen/WantPromote.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/dynamic/new_announce.html": {
+				"resources": [
+					"js/app/beifen/announced.js",
+					"css/app/new_announce.css",
+					"css/common.css",
+					"js/template.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/app/CountdownFun.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/user.html": {
+				"resources": [
+					"img/gold.png",
+					"img/account.png",
+					"css/common.css",
+					"img/set.png",
+					"js/app/beifen/user.js",
+					"img/red-packet.png",
+					"css/app/user.css",
+					"img/indent.png",
+					"img/touxiang.png",
+					"img/xiangji.png",
+					"js/mui.js",
+					"js/template.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/mui.min.js",
+					"img/share.png"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html",
+					"html/dynamic/user.login.html",
+					"html/dynamic/change_photo.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/classify.html": {
+				"resources": [
+					"css/common.css",
+					"img/card-hon.png",
+					"css/app/classify.css",
+					"css/app/comm.css",
+					"img/shoubiao1.png",
+					"js/app/index.glist.js",
+					"css/mui.min.css",
+					"js/template.js",
+					"js/mui.js",
+					"js/config.js",
+					"fonts/mui.ttf",
+					"js/global.js",
+					"img/No.png",
+					"js/jquery.min.js",
+					"img/setIcon.png"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/wenzhang.html": {
+				"resources": [
+					"js/app/beifen/IWantshaidan.js",
+					"js/jquery.form.min.js",
+					"fonts/mui.ttf",
+					"css/app/register.css",
+					"js/mui.js",
+					"js/app/feedback-page.js",
+					"js/config.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"js/template.js"
+				],
+				"refer": [
+					"html/dynamic/IndexHead.html"
+				],
+				"priority": 0
+			},
+			"html/dynamic/wenzhangxiang.html": {
+				"resources": [
+					"js/app/beifen/IWantshaidan.js",
+					"js/jquery.form.min.js",
+					"js/app/feedback-page.js",
+					"js/jquery.min.js",
+					"css/mui.min.css",
+					"css/app/register.css",
+					"js/mui.js",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"index": {
+			"resources": [
+				"html/dynamic/IndexHead.html",
+				"js/jquery.min.js",
+				"js/mui.min.js",
+				"css/mui.min.css",
+				"img/c-picture2.png",
+				"css/app/comm.css",
+				"js/global.js",
+				"js/index.js",
+				"js/config.js"
+			],
+			"refer": [
+				"html/guide.html"
+			],
+			"priority": 0
+		},
+		"idle": {
+			"resources": [
+				"js/app/OrderListFun.js",
+				"img/fenlei.png",
+				"js/app/beifen/GoodsListFun.js",
+				"js/app/cartList.js",
+				"img/icon-zan.png",
+				"html/dynamic/index.about.html",
+				"README.md",
+				"img/sort.png",
+				"js/app/jquery190.js",
+				"js/app/Login.js",
+				"js/mui.lazyload.js",
+				"js/app/Payment.js",
+				"js/app/CalResult.js",
+				"img/downarrow.png",
+				"js/app/IndexFun.js",
+				"js/app/BuyRecordFun.js",
+				"js/app/Lottery.js",
+				"img/c-picture.png",
+				"html/dynamic/recharge.html",
+				"js/app/MobileCheckFun.js",
+				"css/app/helo.css",
+				"js/app/GoodsListFun.js",
+				"img/faxian-hui.png",
+				"js/app/beifen/Register.js",
+				"img/newone.png",
+				"img/jiexiao-hui.png",
+				"html/dynamic/user.Register.html",
+				"html/dynamic/index.payment.html",
+				"html/dynamic/index.top.html",
+				"js/app/RegisterFun.js",
+				"img/todayone.png",
+				"img/Hlimit-bg.png",
+				"js/app/recharge.js",
+				"img/newtwo.png",
+				"img/me-hui.png",
+				"js/app/MobileCheck.js",
+				"js/app/mui.picker.min.js",
+				"html/dynamic/user.mobilecheck.html",
+				"js/app/beifen/Lottery.js",
+				"img/renrenduobao.png",
+				"js/app/beifen/Index.js",
+				"fonts/font/iconfont.ttf",
+				"img/f_picture.png",
+				"html/dynamic/index.index-.html",
+				"js/app/GoodsTimeFun.js",
+				"js/app/consumptionlistFun.js",
+				"js/app/beifen/PostListFun.js",
+				"img/jiexiao-hon.png",
+				"img/duobao-hon.png",
+				"html/dynamic/user.userbuyDetail.html",
+				"js/app/beifen/LotteryDetailFun.js",
+				"js/app/beifen/Bottom.js",
+				"html/dynamic/red-packet.html",
+				"html/dynamic/system.terms.html",
+				"html/dynamic/cart.paysuccess.html",
+				"js/app/beifen/LotteryFun.js",
+				"img/left-sanjiao.png",
+				"js/app/beifen/UserBuyListFun.js",
+				"fonts/iconfont1.ttf",
+				"js/app/beifen/GoodsList.js",
+				"html/dynamic/index.buyrecords.html",
+				"js/app/LotteryDetail.js",
+				"img/c-picture1.png",
+				"js/app/beifen/LotteryDetail.js",
+				"img/loginSet.png",
+				"img/f_set.png",
+				"js/app/Bottom.js",
+				"js/app/Comm.js",
+				"js/app/userbuylist.js",
+				"img/20141024155813332.jpg",
+				"js/app/consumptionlist.js",
+				"img/clock.gif",
+				"html/dynamic/mobilecheck.html",
+				"img/ten-bg.png",
+				"js/app/Cartindex.js",
+				"js/app/AutoLotteryFun.js",
+				"html/dynamic/index.footer.html",
+				"js/app/RechargeFun.js",
+				"img/sanjiaoxing.png",
+				"js/app/beifen/help.js",
+				"img/faxian-hon.png",
+				"css/app/help.css",
+				"js/app/beifen/postlist.js",
+				"img/revealed_03.gif",
+				"img/me-hon.png",
+				"img/iconfont-fenxiang%20(3).png",
+				"img/icon-pinglun.png",
+				"html/dynamic/index.index3.html",
+				"js/app/goodsInfoFun.js",
+				"js/app/beifen/RegisterFun.js",
+				"js/app/HelpFun.js",
+				"LICENSE",
+				"html/dynamic/index.headertop.html",
+				"js/app/UserBuyListFun.js",
+				"img/revealed_07.gif",
+				"js/app/beifen/AutoLottery.js",
+				"html/dynamic/system.message.html",
+				"html/dynamic/index.header.html",
+				"img/iconfont-fenxiang%20(2).png",
+				"js/app/beifen/IndexFun.js",
+				"js/app/BuyRecord.js",
+				"css/mui.css",
+				"js/app/goodsInfo.js",
+				"img/jpbg.png",
+				"img/duobao-hui.png",
+				"js/app/LotteryDetailFun.js",
+				"js/app/LoginFun.js",
+				"js/app/postlist.js",
+				"img/fifty-bg.png",
+				"html/dynamic/index.index2.html",
+				"js/app/LotteryFun.js",
+				"js/app/Register.js",
+				"img/iconfont-pinglun%20(2).png",
+				"img/card-hui.png",
+				"js/mui.lazyload.img.js",
+				"js/app/MpostList.js",
+				"js/app/help.js",
+				"js/app/beifen/BottomFun.js",
+				"img/iconfont-fenxiang%20(1).png",
+				"js/app/MpostListFun.js",
+				"js/app/indexLotteryFun.js",
+				"html/dynamic/new_file.html",
+				"js/app/LotteryTimeFun.js",
+				"js/app/GoodsList.js",
+				"img/shopp.png",
+				"js/app/beifen/jquery190.js",
+				"js/app/beifen/MobileCheck.js"
+			]
+		}
+	}
+}

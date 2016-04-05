@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>全民抢拍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/index.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.mui-table-view::after {
+				background: none;
+			}
+			
+			.h5-1yyg-v1 {
+				height: 100%;
+			}
+			
+			.carry-prize p {
+				margin-bottom: 0;
+				color: #4d4d4d;
+			}
+			
+			.carry_div {
+				position: relative;
+				border: 1px solid #f0eff4;
+				min-height: 120px;
+			}
+			
+			.carry-prize {
+				position: absolute;
+				top: 14px;
+				left: 9em;
+			}
+			
+			.p1 {
+				display: block;
+				/*内联对象需加*/
+				width: 100%;
+				word-break: keep-all;
+				/* 不换行 */
+				white-space: nowrap;
+				/* 不换行 */
+				text-overflow: ellipsis;
+				overflow: hidden;
+				/* 内容超出宽度时隐藏超出部分的内容 */
+			}
+			
+			.p2 {
+				display: block;
+				/*内联对象需加*/
+				width: 12em;
+				word-break: keep-all;
+				/* 不换行 */
+				white-space: nowrap;
+				/* 不换行 */
+				overflow: hidden;
+				/* 内容超出宽度时隐藏超出部分的内容 */
+				text-overflow: ellipsis;
+			}
+			
+			.home-head {
+				margin-top: 44px;
+			}
+			
+			.duoduo {
+				width: 40%;
+				margin-left: -10px;
+				margin-top: 2px;
+			}
+			
+			.fenlei {
+				width: 45%;
+			}
+			
+			.head-r.header-r {
+				right: -17px;
+				top: 10px;
+			}
+			
+			#refreshContainer {
+				overflow: hidden;
+			}
+			
+			.carry_div {
+				min-height: 120px;
+				padding: 10px 0;
+			}
+			
+			#sliderBox {
+				background-image: url(../../img/loading.gif);
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			
+			a:active {
+				color: #222222;
+			}
+			
+			ul {
+				list-style-type: none;
+			}
+			
+			li {
+				list-style: none;
+				float: left;
+			}
+			
+			.mui-col-xs-3 img {
+				width: 50px;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				border-top: 0;
+				border-left: 0;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				padding: 0px 15px;
+				vertical-align: top;
+				border-right: 0;
+				border-bottom: 0;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				margin-top: 2px;
+				font-size: 12px;
+			}
+			
+			.mui-table-view-cell.jies {
+				background: #FFFFFF;
+				width: 100%;
+			}
+			
+			.jiexi {
+				width: 100%;
+				height: 40px;
+				background: #FFFFFF;
+				line-height: 40px;
+				padding-left: 15px;
+				margin: 1px 0;
+			}
+			
+			.left_f {
+				width: 40%;
+				float: left;
+			}
+			
+			.left_f1 {
+				width: 100%;
+				text-align: center;
+			}
+			
+			.left_f img {
+				width: 80px;
+			}
+			
+			.right_f {
+				width: 60%;
+				float: left;
+				height: 100px;
+				padding-top: 6px;
+			}
+			
+			.fjoie {
+				width: 100%;
+				height: 170px;
+				background: #FFFFFF;
+				padding-top: 10px;
+				position: relative;
+			}
+			.fjoie .zxjs:first-child{height: 175px;}
+			.ries {
+				text-align: center;
+				color: #fff;
+				background: #D63049;
+				padding: 2px 2px;
+				margin: 0 3px;
+				border-radius: 10px;
+			}
+			
+			.juli {
+				padding-left: 6px;
+				color: #fff;
+			}
+			
+			.name1 {
+				padding: 0 15px;
+			}
+			
+			.right_f1 {
+				width: 30%;
+				height: 60px;
+				float: left;
+			}
+			
+			.right_f1 img {
+				width: 60px;
+				margin-top: 6px;
+			}
+			
+			.right_f2 {
+				width: 65%;
+				height: 60px;
+				float: left;
+				margin-left: 3%;
+			}
+			.right_f2 .muititle {
+				height: 40px;
+				overflow: hidden;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+			img {
+				width: 50%;
+			}
+			.lotter-item {
+				width: 33.3%;
+				float: left;
+				border-right: 1px solid #ddd;
+				text-align: center
+			}
+			.lotter-item img {
+				width: 80%;
+			}
+			.t_green {
+				color: #FFFFFF;
+				background: #44C75A;
+				padding: 0 7px;
+				border-radius: 9px;
+				display: inline-block;
+				margin-left: -23px;
+				margin-right: 4px;
+			}
+		</style>
+	</head>
+
+	<body class="subpage">
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view mui-table-view-chevron">
+					<div class="h5-1yyg-v1" id="loadingPicBlock">
+						<!-- 内页顶部 -->
+						<!-- 焦点图 -->
+						<section id="sliderBox" class="hotimg">
+							<ul class="slides"></ul>
+						</section>
+						<!--4大板块-->
+						<section>
+							<ul class="mui-table-view mui-grid-view mui-grid-9">
+								<li class="mui-table-view-cell mui-media mui-col-xs-4">
+									<a id="classify.html" title="产品分类">
+										<img src="../../img/classify.png" />
+										<div class="mui-media-body">
+											产品分类
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4">
+									<a id="index.shaidan.html" title="晒单分享">
+										<img src="../../img/Bask.png" />
+										<div class="mui-media-body">
+											晒单分享
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4">
+									<a id="wenzhang.html" title="常见问题">
+										<img src="../../img/problem.png" />
+										<div class="mui-media-body">
+											常见问题
+										</div>
+									</a>
+								</li>
+							</ul>
+						</section>
+						<!-- 最新揭晓 -->
+						<section class="g-main">
+							<div class="m-tt1" id="lottery" Address="index.lottery.html">
+								<h2 class="fl"><a>最新揭晓</a></h2>
+								<div class="fr u-more">
+									<a class="u-rs-m1">
+										<b class="z-arrow">	
+									</b>
+									</a>
+								</div>
+							</div>
+							<div class="fjoie" id="jiexiaoList">
+								
+							</div>
+
+						</section>
+
+						<!-- 热门推荐 -->
+						<section class="g-main">
+							<div class="m-tt1" id="glist" Address="index.glist.html">
+								<h2 class="fl"><a>热门推荐</a></h2>
+								<div class="fr u-more">
+									<a class="u-rs-m1">
+										<b class="z-arrow">	
+									</b>
+									</a>
+								</div>
+							</div>
+							<article class="clearfix h5-1yyg-w310 m-round m-tj-li">
+								<ul id="ulRecommend">
+
+								</ul>
+							</article>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--购物车弹出框-->
+		<div id="pageDialogBG" class="pageDialogBG">
+			<div class="Prompt"></div>
+		</div>
+		<!--购物车弹出框-->
+		<!--首页图片轮播-->
+		<script type="text/template" id="slider-tpl">
+			<ul class="slides">
+				{{each slides as slide index}}
+				<li style="background-color:{{slide.alt}}">
+					<!--<a Address="index.item.html" data-id="{{slide.id}}" data-sub="true">-->
+					<a data-id="{{slide.id}}" data-sub="true">
+						<img class="img_cover" src="{{slide.src}}" data-src="{{slide.src}}" onload="load(this)" alt="" width="{{slide.width}}" height="{{slide.height}}">
+					</a>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<!--最近揭晓-->
+		<script type="text/template" id="lotter-tpl">
+			{{each listItems as renqi index}}
+			{{if index < 3}}
+			<div class="lotter-item">
+				<img src="{{renqi.thumb}}" />
+				<div class="name1 mui-ellipsis-2">{{renqi.title | short}}</div>
+				<div class="block ries"><span id="{{renqi.id}}" class="juli" name="timerItem" seconds="{{renqi.seconds}}"><em>00</em>分<em>00</em>秒<em>0</em><em>0</em><s class="z-aw-tblr"></s></span></div>
+			</div>
+			 {{/if}}
+			{{/each}}
+		</script>
+		<script type="text/template" id="recommend-tpl">
+			{{each shoplistrenqi as renqi index}}
+			<li data-id="{{renqi['id']}}" data-qishu="{{renqi.qishu}}">
+				<div class="f_bor_tr">
+					<div class="m-tj-pic">
+						<a Address="index.item.html" data-id="{{renqi.id}}" data-sub="true" class="u-lott-pic" data-qishu="{{renqi.qishu}}">
+							<img class="img_cover" src="{{renqi['thumb']}}" data-src="{{renqi['thumb']}}" onload="load(this)" data-lazyload="{{renqi['thumb']}}" border=0 alt="" />
+						</a>
+						<ins class="u-promo" style="margin-top: 5px;">价值:￥{{renqi['money']}}</ins>
+					</div>
+					<p class="p2">{{renqi.title}}</p>
+					<div class="Progress-bar">
+						<p class="u-progress" title="已完成{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%">
+							<span class="pgbar" style="width:{{renqi['canyurenshu']/renqi['zongrenshu']*100}}%;">
+		<span class="pging"></span>
+							</span>
+						</p>
+						<ul class="Pro-bar-li">
+							<li class="P-bar01"><em>{{renqi['canyurenshu']}}</em>已参与</li>
+							<li class="P-bar02"><em>{{renqi['zongrenshu']}}</em>总需人次</li>
+							<li class="P-bar03"><em>{{renqi['zongrenshu']-renqi['canyurenshu']}}</em>剩余</li>
+						</ul>
+					</div>
+					<img src="../../img/icon-gouwuche.png" class="cart-img" codeid="{{renqi['id']}}" data-qishu="{{renqi.qishu}}" />
+				</div>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/jquery.base64.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/fun.js"></script>
+		<script type="text/javascript" src="../../js/md5.min.js"></script>
+		<script type="text/javascript" src="../../js/imgload.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/Flexslider.js"></script>
+		<script type="text/javascript" src="../../js/LotteryTimeFun.js"></script>
+		<script type="text/javascript" src="../../js/app/Index.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>账户明细</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/member.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+	</head>
+	<style>
+		.mui-table-view-cell {
+			padding: 11px 15px;
+			border-bottom: 1px solid #EFEFEF;
+		}
+		
+		.time-span {
+			padding-right: 10px;
+		}
+		
+		#ulConsumption {
+			display: none;
+		}
+	</style>
+
+	<body>
+		<div class="h5-1yyg-v1" id="loadingPicBlock">
+			<input name="loadDataType" type="hidden" id="loadDataType" value="0" />
+			<!-- 栏目页面顶部 -->
+			<!-- 内页顶部 -->
+			<section class="clearfix g-member" style="margin-top: 4em;">
+				<article class="clearfix m-round g-userMoney">
+					<a class="z-Recharge-btn" id="chongzhi">去充值</a> 可用余额
+					<span class="orange" id="yue">0.00</span>元
+				</article>
+				<article class="mt10 m-round">
+					<ul class="m-userMoneyNav" id="artic">
+						<li state="-1"><a id="btnConsumption" class="z-MoneyNav-crt01"><b>消费明细</b><span class="xiaofeiprice" id="xfze">(消费总金额：￥0)</span></a><s></s></li>
+						<li state="1"><a id="btnRecharge"><b>充值明细</b><span class="xiaofeiprice" id="czmx">(充值总金额：￥0)</span></a></li>
+					</ul>
+					<!--列表信息-->
+					<ul class="mui-table-view" id="mingxi">
+
+						<ul id="ulConsumption" class="m-userMoneylst m-Consumption">
+							<div id="divNone" class="haveNot z-minheight"><s></s>
+								<p>抱歉，暂无记录！</p>
+							</div>
+						</ul>
+						<ul id="ulRechage" class="m-userMoneylst" style="display:none;">
+
+						</ul>
+						<div id="divLoad" class="loading" style="display:none;"><b></b>正在加载</div>
+						<a id="btnLoadMore" class="loading" style="display:none;">点击加载更多</a>
+				</article>
+			</section>
+		</div>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/user.userbalance.js"></script>
+		<script type="text/template" id="zhmx">
+			{{each zhanghumingxi as zhangdan index}}
+			<li class="mui-table-view-cell">
+				<span class="time-span">{{zhangdan.time | $Time}}</span>
+				<span class="time-span">抢拍{{zhangdan.gonumber}}次</span>
+				<span class="time-span">消费{{zhangdan.money}}元</span>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/template" id="echarge">
+			{{each zhanghumingxi as zhangdan index}}
+			<li class="mui-table-view-cell">
+				<span class="time-span">{{zhangdan.time | $Time}}</span>
+				<span class="time-span">充值{{zhangdan.money}}元</span>
+			</li>
+			{{/each}}
+		</script>
+	</body>
+
+</html>

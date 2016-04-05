@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>晒单详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/single.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			textarea {
+				resize: none;
+			}
+			
+			div#pageDialogBG {
+				background: #000 none repeat scroll 0 0;
+				display: none;
+				height: 100%;
+				left: 0;
+				opacity: 0.3;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 101;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-scroll" style="margin-top: 44px;">
+				<div id="shaidanBox"></div>
+			</div>
+		</div>
+
+		<script type="text/template" id="shaidan">
+			<section class="clearfix g-share-lucky">
+				<a class="fl u-lucky-img">
+					<img border="0" alt="" src="{{sdxiangxi_top.uphoto}}">
+				</a>
+				<img src="../../img/iconfont-fenxiang (3).png" class="caibi" />
+				<span class="decied">奖品金币<br><span class="timefde">{{sdxiangxi_top.hdjb}}</span></span>
+				<div class="u-lucky-r">
+
+					<p><span class="name">幸运获得者：</span>
+						<a class="z-user blue">{{sdxiangxi_top.username}}</a>
+					</p>
+
+					<p>幸运抢拍码：<em class="orange">{{sdxiangxi_top.q_user_code}}</em></p>
+					<p>本期抢拍：<em class="orange">{{sdxiangxi_top.gonumber}}</em>人次</p>
+					<p>揭晓时间：<em class="arial">{{time(sdxiangxi_top.sd_time)}}</em></p>
+				</div>
+			</section>
+			<!-- 热门推荐 -->
+			<section class="clearfix g-share-ct">
+				<b class="z-aw-es z-arrow"></b>
+				<article class="m-share-con">
+					<h3>{{sdxiangxi_top.sd_title}}</h2>
+					<em class="dsrfexs">{{time(sdxiangxi_top.sd_time)}}</em>
+					<p class="z-share-pad" id="shareContent">{{sdxiangxi_top.sd_content}}</p>
+					{{if sdxiangxi_top.sd_photolist.length > 0}}
+					<p class="goods-img">
+						{{each sdxiangxi_top.sd_photolist as value i}}
+						<img src="{{value}}">
+						{{/each}}
+					</p>
+					{{/if}}
+				</article>
+				
+				<div class="m-share-fixed">
+					<div id="CommentNav">
+						<div class="m-share-btn">
+							<div id="divtest" class="u-btn-w" style="margin-left: 10px;">
+								{{if emHits(sdxiangxi_top.sd_id)}}
+								<a id="emHits" class="z-btn-mood">
+									<img src="../../img/iconfont-star.png" class="pinglun1" ></span>
+								
+									<span class="pindr1">羡慕嫉妒恨({{sdxiangxi_top.sd_zhan}})</span></a>
+								{{else}}
+								<a class="z-btn-mood z-btn-moodgray">
+									<s></s>已羡慕({{sdxiangxi_top.sd_zhan}})
+								</a>
+								{{/if}}
+							</div>
+							<div class="u-btn-w"><a id="btnComment" href="javascript:void(0);" class="z-btn-comment"><img src="../../img/iconfont-fenxiang (2).png" class="pinglun" ><span class="pindr">我要评论</span></a></div>
+							<!--<div class="u-btn-w"><a id="btnShare" href="javascript:void(0);" class="z-btn-Share"><img src="../../img/iconfont-fenxian.png" class="pinglun3" ><span class="pindr">分享</span></a></div>-->
+						</div>
+						
+						<div class="m-comment" style="display:none;">
+							<textarea name="comment" id="comment" rows="3" class="z-comment-txt"></textarea>
+							<div class="u-Btn">
+								<div class="u-Btn-li"><a id="btnCancel" href="javascript:;" class="z-CloseBtn">取 消</a></div>
+								<div class="u-Btn-li"><a id="btnPublish" href="javascript:;" class="z-DefineBtn">发表评论</a></div>
+							</div>
+						</div>
+						<div class="m-shareT-round"></div>
+					</div>
+					<div id="fillDiv" style="display:none;"></div>
+				</div>
+				<article class="m-share-comment m-round" id="commentsBox">
+					{{if shaidancontent=="暂无评论"}}
+					<h3>共<span id="ReplyCount"  class="z-user orange">0</span>条评论</h3>
+					<ul id="replyList">
+						<li>暂无评论</li>
+					</ul>
+					{{else}}
+					<h3>共<span id="ReplyCount"  class="z-user orange">{{shaidancontent.length}}</span>条评论</h3>
+					<ul id="replyList">
+						{{each shaidancontent as value i}}
+						<li>
+							<a class="fl u-comment-img" name="userindex" userID="{{value.sdhf_userid}}">
+								<img src="{{value.img}}" />
+							</a>
+							<div class="u-comment-r">
+								<p class="z-comment-name"><a class="blue" name="userindex" userID="{{value.sdhf_userid}}">{{value.sdhf_username}}：</a>{{value.sdhf_content}}<b>{{time(value.sdhf_time)}}</b></p>
+							</div>
+						</li>
+						{{/each}}
+					</ul>
+					{{/if}}
+				</article>
+			</section>
+		</script>
+
+		<script type="text/template" id="comments">
+			{{if shaidancontent=="暂无评论"}}
+			<h3>共<span id="ReplyCount"  class="z-user orange">0</span>条评论</h3>
+			<ul id="replyList">
+				<li>暂无评论</li>
+			</ul>
+			{{else}}
+			<h3>共<span id="ReplyCount"  class="z-user orange">{{shaidancontent.length}}</span>条评论</h3>
+			<ul id="replyList">
+				{{each shaidancontent as value i}}
+				<li>
+					<a class="fl u-comment-img" name="userindex" userID="{{value.sdhf_userid}}">
+						<img src="{{value.img}}" />
+					</a>
+					<div class="u-comment-r">
+						<p class="z-comment-name"><a class="blue" name="userindex" userID="{{value.sdhf_userid}}">{{value.sdhf_username}}：</a>{{value.sdhf_content}}<b>{{time(value.sdhf_time)}}</b></p>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+			{{/if}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<!--<script type="text/javascript" src="../../js/share.js"></script>-->
+		<script type="text/javascript" src="../../js/app/pageDialog.js"></script>
+		<script type="text/javascript" src="../../js/app/PostListFun.js"></script>
+	</body>
+
+</html>

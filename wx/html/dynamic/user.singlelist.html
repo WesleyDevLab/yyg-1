@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>我的晒单 </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/member.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style type="text/css">
+			.BtnDan {
+				background-color: #FF6600;
+				/*margin-top: -10px;
+				margin-left: 260px;*/
+				border-radius: 5px;
+				width: 65px;
+				height: 30px;
+				text-align: center;
+			}
+			
+			#span {
+				text-align: center;
+				line-height: 2.5;
+				color: white;
+			}
+			
+			.btns {
+				position: absolute;
+				bottom: 5px;
+				right: 0px;
+			}
+			
+			.z-Limg {
+				padding: 0px 5px;
+				font-size: 0;
+				display: inline-block;
+			}
+			
+			.carry-prize {
+				left: 90px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="h5-1yyg-v1" id="loadingPicBlock" style="margin-top: 45px;">
+			<!-- 栏目页面顶部 -->
+			<!-- 内页顶部 -->
+			<div class="g-snav m_listNav" id="sd">
+				<li class="g-snav-lst z-sgl-crt" state="Y"><a class="gray9">已晒单</a><b></b></li>
+				<li class="g-snav-lst " state="N"><a class="gray9">未晒单</a></li>
+			</div>
+			<div class="clearfix" id="shaidanLi">
+				<div class="prompLoad">数据加载中...</div>
+			</div>
+			<!--暂无记录-->
+			<section id="ulConsumption" class="clearfix g-Single-lst z-minheight" style="display: none;">
+				<div id="divNone" class="haveNot z-minheight"><s></s>
+					<p>抱歉，您没有晒单记录！</p>
+				</div>
+			</section>
+		</div>
+		<script type="text/template" id="shaidanList">
+			{{each myshaidan as shaidan index}}
+			<div class="carry_div " style="background-color: white; margin: 5px; height: 82px;">
+				<span class="z-Limg">
+						<img src="{{shaidan.thumb}}">
+					</span>
+				<div class="carry-prize">
+					<p class="p1">(第{{shaidan.qishu}}期){{shaidan.shopname}}</p>
+					<p>揭晓时间：{{shaidan.time | $Time}}</p>
+				</div>
+				{{if parm=="N"}}
+				<div class="btns" style="margin-top: -10%; margin-left: 12px;">
+					<li class="BtnDan" id="IWantshaidan.html" title="我要晒单" data-id="{{shaidan.id}}" data-sid="{{shaidan.sid}}" data-qishu="{{shaidan.qishu}}"><span id="span">我要晒单</span></li>
+				</div>
+				{{/if}}
+			</div>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/app/beifen/user.singlelist.js"></script>
+
+	</body>
+
+</html>

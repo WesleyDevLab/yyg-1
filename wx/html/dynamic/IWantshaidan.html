@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>晒单</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/app/register.css" />
+	</head>
+	<style>
+		textarea {
+			border: 0px;
+			padding: 5px 0px;
+		}
+		
+		.shaidan_img {
+			width: 32%;
+			height: 180px;
+		}
+		
+		.shaitu_div {
+			height: 180px;
+			width: 100%;
+			background-color: white;
+		}
+		
+		label {
+			font-size: 20px;
+		}
+		
+		span {
+			margin-left: 10px;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="../../css/home/feedback-page.css" />
+
+	<body>
+		<div id="feedback" class="mui-content mui-page feedback" style="margin-top: 8px;">
+			<form class="mui-page-content" id="ImgUpload" method="post" action="../../../?/mobile/ajax/usersingle/" enctype="multipart/form-data">
+				<p><b>标题内容</b></p>
+				<div class="mui-input-row">
+					<div class="mui-pull-left">
+						<input id="title" type="text" placeholder="请输入你的标题内容！" name="sd_title" />
+					</div>
+				</div>
+				<input type="hidden" name="sd_shopid" value="" />
+				<input type="hidden" name="sd_qishu" value="" />
+				<input type="hidden" name="sd_userid" value="" />
+				<input type="hidden" name="key" value="" />
+				<p><b>晒单内容</b></p>
+				<div class="row mui-input-row" style="margin: 8px 0px;">
+					<textarea id="question" name="sd_content" class="mui-input-clear question" rows="5" placeholder="请输入你的晒单内容"></textarea>
+				</div>
+				<p><b>晒图</b></p>
+				<div id="image-list" name="sd_photolist" class="row image-list">
+
+				</div>
+				<div class="bottom" style="width: 100%;margin: auto;margin-left: -7px;margin-top: 15px;">
+					<button id="submit" type="submit" class="mui-btn mui-btn-block">立即晒单</button>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/jquery.form.min.js"></script>
+		<script src='../../js/app/feedback-page.js'></script>
+		<script type="text/javascript" src="../../js/app/beifen/IWantshaidan.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>所有商品 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/goods.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.g-header {
+				z-index: 9;
+			}
+			
+			.NavBox {
+				position: fixed;
+				top: 0px;
+				width: 100%;
+				z-index: 9;
+				background: #zz;
+			}
+			
+			.mui-scroll-wrapper {
+				top: 10px;
+				z-index: 1;
+			}
+			
+			.NoData {
+				background-color: #FEFEFE;
+			}
+			
+			#pageDialogBG {
+				-webkit-border-radius: 5px;
+				width: 255px;
+				height: 45px;
+				color: #fff;
+				font-size: 16px;
+				text-align: center;
+				line-height: 45px;
+			}
+			
+			.Loading {
+				background: #efeff4;
+			}
+			.liebiao li{overflow: hidden;}
+			.goodsList .goodsListR .pRate{height: auto;}
+			.goodsList .goodsListR h2{margin-right: 60px;max-height: 36px;overflow: hidden;}
+			.goodsList{margin: 10px auto auto;}
+			.goodsCon{margin-top: 40px;}
+		</style>
+	</head>
+
+	<body>
+		<section class="NavBox">
+			<!-- 导航 -->
+			<div class="goodsNav">
+				<ul id="divGoodsNav">
+					<li order="10" class="current"><a>即将揭晓<b></b></a></li>
+					<li order="20"><a>人气<b></b></a></li>
+					<li order="40"><a>最新<b></b></a></li>
+					<li order="50" type="price"><a>价格<em></em><s></s><b></b></a></li>
+					<li order="">
+						<a >全部<s class="arrowUp"></s></a>
+						<dl style="display:none;" id="shopClassBox">
+							<dd type="0" class="sOrange"><a >全部</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!--下拉刷新容器-->
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<div class="mui-table-view-chevron">
+					<div class="h5-1yyg-v1" id="loadingPicBlock">
+						<section class="goodsCon">
+							<!-- 列表 -->
+							<div class="goodsList" id="goodsListBox"></div>
+						</section>
+						<input id="urladdress" value="" type="hidden" />
+						<input id="pagenum" value="" type="hidden" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/html" id="shopClass">
+			{{each categoryx as value i}}
+			<dd><a id="{{value.cateid}}" parentid="{{value.parentid}}">{{value.name}}</a></dd>{{/each}}
+		</script>
+		<script type="text/html" id="shopList">
+			{{each shoplist as data i}}
+			<ul class="liebiao">
+				<li class="shopLi" id="{{data.id}}" data-qishu="{{data.qishu}}">
+					<span class="z-Limg">
+						<img src="{{data.thumb}}">
+					</span>
+					<div class="goodsListR">
+						<h2 class="h2-div">{{data.title}}</h2>
+						<div class="pRate">
+							<div class="Progress-bar" id="{{data.id}}">
+								<p class="u-progress">
+									<span class="pgbar" style="width:{{(data.canyurenshu / data.zongrenshu)*100}}%">
+										<span class="pging"></span>
+									</span>
+								</p>
+								<ul class="Pro-bar-li lise">
+									<li class="P-bar01">
+										<div class="num-em1 orange">{{data.canyurenshu}}</div>
+										<div>已参与</div>
+									</li>
+									<li class="P-bar02">
+										<div class="num-em1">{{data.zongrenshu}}</div>
+										<div>总需人次</div>
+									</li>
+									<li class="P-bar03">
+										<div class="num-em1 last-num">{{data.shenyurenshu}}</div>
+										<div>剩余</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="shuxian"></div>
+					<div class="cart" codeid="{{data.id}}" data-qishu="{{data.qishu}}">
+						<img src="../../img/card-hon.png" />
+					</div>
+				</li>
+			</ul>
+			{{/each}}
+		</script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/template.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="../../js/app/Flexslider.js"></script>
+		<script type="text/javascript" src="../../js/app/CountdownFun.js"></script>
+		<script type="text/javascript" src="../../js/app/index.glist.js"></script>
+		<!--购物车弹出框-->
+		<div id="pageDialogBG" class="pageDialogBG">
+			<div class="Prompt"></div>
+		</div>
+		<!--购物车弹出框-->
+	</body>
+
+</html>

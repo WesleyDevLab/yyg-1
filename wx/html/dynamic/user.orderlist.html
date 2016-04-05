@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>获得的商品 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link href="../../css/app/comm.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/app/member.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../../css/home/index.css" />
+		<style>
+			.shouhuodz {
+				padding: 10px;
+				background: #FF8533;
+				color: #FFFFFF;
+				font-size: 14px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="h5-1yyg-v1" id="loadingPicBlock" style="padding-top: 35px;">
+			<!-- 栏目页面顶部 -->
+			<!-- 内页顶部 -->
+			<input name="hidTotalCount" type="hidden" id="hidTotalCount" />
+			<input name="hidPageMax" type="hidden" id="hidPageMax" />
+			<section class="clearfix g-member g-goods">
+				<div id="ulListBox" class="z-minheight">
+					<div class="shouhuodz">您还没有设置自己的默认收货地址信息，请到“我的抢拍”-“个人设置”-“收货地址”进行设置 </div>
+					<!--获得商品信息列表-->
+					<div id="divGetGoods" class="mBuyRecord" style="display: block;">
+						<div class="prompLoad">数据加载中...</div>
+					</div>
+
+					<ul id="ulConsumption" class="m-userMoneylst m-Consumption" style="display: none;">
+						<div class="haveNot z-minheight">
+							<div id="divNone" class="haveNot z-minheight"><s></s>
+								<p>抱歉，您的没有获奖记录！</p>
+							</div>
+						</div>
+					</ul>
+				</div>
+			</section>
+			<script type="text/javascript" src="../../js/mui.js"></script>
+			<script type="text/javascript" src="../../js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../js/mui-weixin.js"></script>
+			<script type="text/javascript" src="../../js/template.js"></script>
+			<script type="text/javascript" src="../../js/config.js"></script>
+			<script type="text/javascript" src="../../js/app/OrderList.js"></script>
+			<script type="text/template" id="Getgoods">
+				{{each huode as GoogsList index}}
+				<ul class="BuyRecordList">
+					<li class="mBuyRecordL" style="float: left;">
+						<img class="mui-media-object mui-pull-left" src="{{GoogsList.thumb}}">
+					</li>
+					<li class="mBuyRecordR">(第{{GoogsList.shopqishu}}期){{GoogsList.shopname}}
+						<p class="mValue">价值：￥{{GoogsList.money}}</p>
+						<span>幸运抢拍码：
+							<em class="orange">{{GoogsList.huode}}</em>
+							<br>揭晓时间：{{GoogsList.time | $Time}}
+						</span>
+					</li>
+				</ul>
+				{{/each}}
+			</script>
+		</div>
+	</body>
+
+</html>
